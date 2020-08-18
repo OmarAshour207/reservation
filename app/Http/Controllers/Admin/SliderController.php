@@ -59,7 +59,7 @@ class SliderController extends Controller
     public function destroy(Slider $slider)
     {
         if($slider->image){
-            Storage::disk('local')->delete('public/sliders/'. $slider->image);
+            Storage::disk('local')->delete('public/slider/'. $slider->image);
         }
         $slider->delete();
         session()->flash('success', trans('admin.deleted_successfully'));

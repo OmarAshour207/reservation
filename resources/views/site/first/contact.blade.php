@@ -1,105 +1,133 @@
 @extends('site.first.layouts.app')
 
 @section('content')
-    <!-- Content -->
-    <div class="page-content bg-white">
-        <!-- Contact Form -->
-        <div class="section-full content-inner contact-page-9 overlay-black-dark" style="background-image: url({{ asset('site/images/background/bg5.jpg') }}); background-position: 30% 100%">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-12 text-white">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 m-b30">
-                                <div class="icon-bx-wraper bx-style-1 p-a20 radius-sm">
-                                    <div class="icon-content">
-                                        <h5 class="dlab-tilte">
-                                            <span class="icon-sm text-primary"><i class="ti-location-pin"></i></span>
-                                            {{ __('home.address') }}
-                                        </h5>
-                                        <p>{{ setting(session('lang') . '_address') }} </p>
-                                        <h6 class="m-b15 text-black font-weight-400"><i class="ti-alarm-clock"></i> {{ __('home.office_hours') }}</h6>
-                                        <p class="m-b0">Mon To Sat - 10.00 - 07.00</p>
-                                        <p>Sunday - Close</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 m-b30">
-                                <div class="icon-bx-wraper bx-style-1 p-a20 radius-sm">
-                                    <div class="icon-content">
-                                        <h5 class="dlab-tilte">
-                                            <span class="icon-sm text-primary"><i class="ti-email"></i></span>
-                                            {{ __('home.email_contact') }}
-                                        </h5>
-                                        <p class="m-b0">{{ setting('email') }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 m-b30">
-                                <div class="icon-bx-wraper bx-style-1 p-a20 radius-sm">
-                                    <div class="icon-content">
-                                        <h5 class="dlab-tilte">
-                                            <span class="icon-sm text-primary"><i class="ti-mobile"></i></span>
-                                            {{ __('home.phone') }}
-                                        </h5>
-                                        <p class="m-b0">{{ setting('phone') }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <!-- Page Title -->
+    <div class="page-title-area page-title-five">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="page-title-item">
+                    <h2>{{ __('home.contact_us') }}</h2>
+                    <ul>
+                        <li>
+                            <a href="{{ url('/') }}">{{ __('home.home') }}</a>
+                        </li>
+                        <li>
+                            <i class="icofont-simple-right"></i>
+                        </li>
+                        <li>{{ __('home.contact_us') }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Title -->
+
+    <!-- Location -->
+    <div class="location-area">
+        <div class="container">
+            <div class="row location-wrap">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="location-item">
+                        <i class="icofont-location-pin"></i>
+                        <h3>{{ __('home.address') }}</h3>
+                        <p>{{ setting(session('lang') . '_address') }}</p>
                     </div>
-                    <div class="col-lg-8 col-md-12 m-b30">
-                        @if (session('success'))
-                            <h3 class="alert alert-success"> {{ __('home.sent_successfully') }} </h3>
-                        @endif
-                        <form class="inquiry-form wow box-shadow bg-white fadeInUp" data-wow-delay="0.2s" method="post" action="{{ route('send.contact') }}">
-                            @csrf
-                            <h3 class="title-box font-weight-300 m-t0 m-b10"> {{ __('home.convert_idea') }} <span class="bg-primary"></span></h3>
-                            @php $desc = session('lang'). '_description'; @endphp
-                            <p> {!! $contactUs->$desc !!} </p>
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="ti-user text-primary"></i></span>
-                                            <input name="name" type="text" required class="form-control" placeholder="{{ __('home.full_name') }}">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="ti-mobile text-primary"></i></span>
-                                            <input name="phone" type="text" class="form-control" placeholder="{{ __('home.phone') }} ({{ __('home.optional') }})">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="ti-email text-primary"></i></span>
-                                            <input name="email" type="email" class="form-control" placeholder="{{ __('home.email') }}" >
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="ti-agenda text-primary"></i></span>
-                                            <textarea name="message" rows="4" class="form-control" required placeholder="{{ __('home.tell_us') }}"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-md-12">
-                                    <button name="submit" type="submit" value="Submit" class="site-button button-md"> <span> {{ __('home.send') }} </span> </button>
-                                </div>
-                            </div>
-                        </form>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="location-item">
+                        <i class="icofont-ui-message"></i>
+                        <h3>{{ __('home.email') }}</h3>
+                        <ul>
+                            <li>{{ setting('email') }}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 offset-sm-3 offset-lg-0 col-lg-4">
+                    <div class="location-item">
+                        <i class="icofont-ui-call"></i>
+                        <h3>{{ __('home.phone') }}</h3>
+                        <ul>
+                            <li>{{ setting('phone') }}</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Contact Form END -->
     </div>
-    <!-- Content END-->
-    <br>
+    <!-- End Location -->
+
+    <!-- Drop -->
+    <section class="drop-area pt-100">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-7 p-0">
+                    <div class="drop-item drop-img">
+                        <div class="drop-left">
+                            <h2>{{ __('home.drop_your_message') }}</h2>
+                            <form id="contactForm" method="post" action="{{ route('send.contact') }}">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-sm-6 col-lg-6">
+                                        <div class="form-group">
+                                            <input type="text" name="name" id="name" class="form-control" required data-error="{{ __('home.full_name') }}" placeholder="{{ __('home.full_name') }}">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6 col-lg-6">
+                                        <div class="form-group">
+                                            <input type="email" name="email" id="email" class="form-control" required data-error="{{ __('home.email_contact') }}" placeholder="{{ __('home.email_contact') }}">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-lg-12">
+                                        <div class="form-group">
+                                            <input type="text" name="phone" id="phone_number" required data-error="{{ __('home.phone') }}" class="form-control" placeholder="{{ __('home.phone') }}">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 col-lg-12">
+                                        <div class="form-group">
+                                            <textarea name="message" class="form-control" id="message" cols="30" rows="5" required data-error="{{ __('home.message') }}" placeholder="{{ __('home.message') }}"></textarea>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 col-lg-12">
+                                        <button type="submit" class="drop-btn">
+                                            {{ __('home.send') }}
+                                        </button>
+                                        <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 p-0">
+                    <div class="speciality-item speciality-right speciality-right-two speciality-right-three">
+                        <img src="{{ $about->about_image }}" alt="Contact">
+                        <div class="speciality-emergency">
+                            <div class="speciality-icon">
+                                <i class="icofont-ui-call"></i>
+                            </div>
+                            <h3>{{ __('home.emergency_call') }}</h3>
+                            <p> {{ setting('phone') }} </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Drop -->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 @endsection

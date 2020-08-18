@@ -9,18 +9,18 @@
                             <li>
                                 <a href="tel:+07554332322">
                                     <i class="icofont-ui-call"></i>
-                                    Call : +07 554 332 322
+                                    {{ __('home.call') }} : {{ setting('phone') }}
                                 </a>
                             </li>
                             <li>
                                 <a href="mailto:hello@medsev.com">
                                     <i class="icofont-ui-message"></i>
-                                    hello@medsev.com
+                                    {{ setting('email') }}
                                 </a>
                             </li>
                             <li>
                                 <i class="icofont-location-pin"></i>
-                                210-27 Quadra, Canada
+                                {{ setting(session('lang') . '_address') }}
                             </li>
                         </ul>
                     </div>
@@ -30,21 +30,18 @@
                 <div class="header-top-item">
                     <div class="header-top-right">
                         <ul>
-                            <li>
-                                <a href="#">
-                                    <i class="icofont-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icofont-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icofont-pinterest"></i>
-                                </a>
-                            </li>
+                            @php
+                                $socialSites = ['facebook', 'twitter', 'instagram'];
+                            @endphp
+                            @for($i = 0; $i < count($socialSites); $i++)
+                                @if(setting($socialSites[$i]) != '')
+                                    <li>
+                                        <a href="{{ setting($socialSites[$i]) }}">
+                                            <i class="icofont-{{ $socialSites[$i] }}"></i>
+                                        </a>
+                                    </li>
+                                @endif
+                            @endfor
                         </ul>
                     </div>
                 </div>
@@ -58,7 +55,7 @@
 <div class="navbar-area sticky-top">
     <!-- Menu For Mobile Device -->
     <div class="mobile-nav">
-        <a href="index.html" class="logo">
+        <a href="{{ url('/') }}" class="logo">
             <img src="{{ asset('site/img/logo-two.png') }}" alt="Logo">
         </a>
     </div>
@@ -67,32 +64,63 @@
     <div class="main-nav">
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light">
-                <a class="navbar-brand" href="index.html">
-                    <img src="{{ asset('site/img/logo.png') }}" alt="Logo">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    <img src="{{ getLogo() }}" alt="Logo">
                 </a>
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="#" class="nav-link dropdown-toggle active">Home</a>
+                            <a href="{{ url('/') }}" class="nav-link {{ setActiveHome('') }}">{{ __('home.home') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a href="about.html" class="nav-link">About</a>
+                            <a href="{{ url('about') }}" class="nav-link {{ setActive('about') }}">{{ __('home.about_us') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link dropdown-toggle">Pages</a>
+                            <a href="{{ url('services') }}" class="nav-link {{ setActive('services') }}">{{ __('home.our_services') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link dropdown-toggle">Services</a>
+                            <a href="{{ url('team') }}" class="nav-link {{ setActive('team') }}">{{ __('admin.team_members') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link dropdown-toggle">Doctor</a>
+                            <a href="{{ url('blogs') }}" class="nav-link">{{ __('home.blogs') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link dropdown-toggle">Blog</a>
+                            <a href="{{ url('contact-us') }}" class="nav-link">{{ __('home.contact_us') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a href="contact.html" class="nav-link">Contact Us</a>
+                            <a href="#" class="nav-link dropdown-toggle">{{ __('admin.languages') }}</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a href="{{ url('lang/ar') }}" class="nav-link"><i class="icofont-flag"></i> {{ __('home.arabic') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('lang/en') }}" class="nav-link"><i class="icofont-flag"></i> {{ __('home.english') }}</a>
+                                </li>
+                            </ul>
                         </li>
+                        @if (auth()->check())
+                            <li class="nav-item">
+                                <a href="#" class="nav-link dropdown-toggle">{{ auth()->user()->name }} <i class="icofont-ui-user"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link"> <i class="icofont-edit"></i> {{ __('home.edit_profile') }}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"
+                                           class="nav-link"><i class="icofont-logout"></i>{{ __('home.logout') }}
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a href="{{ url('login') }}" class="nav-link"> <i class="icofont-login"></i> {{ __('home.login') }}</a>
+                            </li>
+                        @endif
                     </ul>
                     <div class="nav-srh">
                         <div class="search-toggle">
@@ -101,7 +129,7 @@
                         </div>
                         <div class="search-area">
                             <form>
-                                <input type="text" class="src-input" id="search-terms" placeholder="Search here..." />
+                                <input type="text" class="src-input" id="search-terms" placeholder="{{ __('home.search_here') }}" />
                                 <button type="submit" name="submit" value="Go" class="search-icon"><i class="icofont-search-1"></i></button>
                             </form>
                         </div>

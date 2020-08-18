@@ -23,4 +23,12 @@ class TeamMember extends Model
     {
         return Storage::url('public/team-members/' . $this->image);
     }
+
+    // Scopes
+    public function scopeWhenSearch($query, $search)
+    {
+        return $query->when($search, function ($q) use ($search){
+            return $q->where(session('lang') . '_name', 'like', "%$search%");
+        });
+    }
 }

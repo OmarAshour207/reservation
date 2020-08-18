@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     @php
-        session('lang') ?session()->put('lang', 'ar'): session()->put('lang', 'ar');
+        session('lang') ?? session()->put('lang', app()->getLocale());
     @endphp
 
     <meta charset="utf-8">
@@ -36,8 +36,6 @@
     <link rel="stylesheet" href="{{ asset('site/css/magnific-popup.css') }}">
     <!-- Wow CSS -->
     <link rel="stylesheet" href="{{ asset('site/css/animate.css') }}">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="{{ asset('site/css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('site/css/style.css') }}">
 
     @if(session('lang') == 'ar')
@@ -45,6 +43,8 @@
         <link rel="stylesheet" href="{{ asset('site/css/rtl.css') }}">
     @endif
 
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{{ asset('site/css/responsive.css') }}">
     @stack('styles')
 
 </head>

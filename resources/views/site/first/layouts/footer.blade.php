@@ -1,35 +1,36 @@
 <!-- Footer -->
 <footer class="pb-70">
 
-    <!-- Newsletter -->
-    <div class="newsletter-area">
-        <div class="container">
-            <div class="row newsletter-wrap align-items-center">
-                <div class="col-lg-6">
-                    <div class="newsletter-item">
-                        <h2>Join Our Newsletter</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+    @if (request()->segment(1) != 'login' && request()->segment(1) != 'register')
+        <!-- Newsletter -->
+        <div class="newsletter-area">
+            <div class="container">
+                <div class="row newsletter-wrap align-items-center">
+                    <div class="col-lg-6">
+                        <div class="newsletter-item">
+                            <h2> {{ __('home.join_newsletter') }} </h2>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="newsletter-item">
-                        <div class="newsletter-form">
-                            <form class="newsletter-form" data-toggle="validator">
-                                <input type="email" class="form-control" placeholder="Enter Your Email" name="EMAIL" required autocomplete="off">
+                    <div class="col-lg-6">
+                        <div class="newsletter-item">
+                            <div class="newsletter-form">
+                                <form class="newsletter-form" data-toggle="validator">
+                                    <input type="email" class="form-control" placeholder="{{ __('home.email_contact') }}" name="email" required autocomplete="off">
 
-                                <button class="btn newsletter-btn" type="submit">
-                                    Subscribe
-                                </button>
+                                    <button class="btn newsletter-btn" type="submit">
+                                        {{ __('home.subscribe') }}
+                                    </button>
 
-                                <div id="validator-newsletter" class="form-result"></div>
-                            </form>
+                                    <div id="validator-newsletter" class="form-result"></div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- End Newsletter -->
+        <!-- End Newsletter -->
+    @endif
 
     <div class="container">
         <div class="row">
@@ -40,17 +41,15 @@
                         <ul>
                             <li>
                                 <i class="icofont-ui-message"></i>
-                                <a href="mailto:info@medisev.com">info@medisev.com</a>
-                                <a href="mailto:hello@medisev.com">hello@medisev.com</a>
+                                <a href="mailto:{{ setting('email') }}">{{ setting('email') }}</a>
                             </li>
                             <li>
                                 <i class="icofont-stock-mobile"></i>
-                                <a href="tel:+07554332322">Call: +07 554 332 322</a>
-                                <a href="tel:+236256256365">Call: +236 256 256 365</a>
+                                <a href="tel:+236256256365">{{ __('home.call') }}: {{ setting('phone') }}</a>
                             </li>
                             <li>
                                 <i class="icofont-location-pin"></i>
-                                210-27 Quadra, Market Street, Victoria Canada
+                                {{ setting(session('lang') . '_address') }}
                             </li>
                         </ul>
                     </div>
@@ -59,25 +58,22 @@
             <div class="col-sm-6 col-lg-2">
                 <div class="footer-item">
                     <div class="footer-quick">
-                        <h3>Quick Links</h3>
+                        <h3> {{ __('home.useful_links') }} </h3>
                         <ul>
                             <li>
-                                <a href="about.html">About us</a>
+                                <a href="{{ url('about') }}"> {{ __('home.about_us') }} </a>
                             </li>
                             <li>
-                                <a href="blog.html">Blog</a>
+                                <a href="{{ url('blog') }}">{{ __('admin.blogs') }}</a>
                             </li>
                             <li>
-                                <a href="blog-details.html">Our Expertise</a>
+                                <a href="{{ url('contact-us') }}">{{ __('home.contact_us') }}</a>
                             </li>
                             <li>
-                                <a href="faq.html">Faq</a>
+                                <a href="{{ url('projects') }}"> {{ __('home.our_projects') }} </a>
                             </li>
                             <li>
-                                <a href="doctor.html">Doctors</a>
-                            </li>
-                            <li>
-                                <a href="contact.html">Contact us</a>
+                                <a href="{{ url('services') }}">{{ __('home.our_services') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -86,26 +82,16 @@
             <div class="col-sm-6 col-lg-3">
                 <div class="footer-item">
                     <div class="footer-quick">
-                        <h3>Our Services</h3>
+                        <h3> {{ __('home.our_services') }} </h3>
                         <ul>
+                            @foreach($services as $service)
                             <li>
-                                <a href="#">Dental Care</a>
+                                @php
+                                    $title = session('lang')  . '_title';
+                                @endphp
+                                <a href="{{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }}"> {{ $service->$title }} </a>
                             </li>
-                            <li>
-                                <a href="#">Cardiology</a>
-                            </li>
-                            <li>
-                                <a href="#">Hijama Therapy</a>
-                            </li>
-                            <li>
-                                <a href="#">Massage Therapy</a>
-                            </li>
-                            <li>
-                                <a href="#">Ambluance Sevices</a>
-                            </li>
-                            <li>
-                                <a href="#">Medicine</a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -113,19 +99,19 @@
             <div class="col-sm-6 col-lg-3">
                 <div class="footer-item">
                     <div class="footer-feedback">
-                        <h3>Feedback</h3>
+                        <h3>{{ __('home.feedback') }}</h3>
                         <form>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Name">
+                                <input type="text" class="form-control" placeholder="{{ __('home.full_name') }}">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Phone">
+                                <input type="text" class="form-control" placeholder="{{ __('home.phone') }}">
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" id="your_message" rows="5" placeholder="Message"></textarea>
+                                <textarea class="form-control" id="your_message" rows="5" placeholder="{{ __('home.message') }}"></textarea>
                             </div>
                             <div class="text-left">
-                                <button type="submit" class="btn feedback-btn">SUBMIT</button>
+                                <button type="submit" class="btn feedback-btn">{{ __('home.send') }}</button>
                             </div>
                         </form>
                     </div>

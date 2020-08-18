@@ -16,8 +16,8 @@
                 params: {
                     _token: '{{ csrf_token() }}',
                     path: path,
-                    width: 258,
-                    height: 75
+                    width: 375,
+                    height: 179
                 },
                 addRemoveLinks: true,
                 removedfile:function (file) {

@@ -99,19 +99,12 @@
                 </li>
 
                 <li class="sidebar-menu-item">
-                    <a class="sidebar-menu-button" href="{{ route('clients.index') }}">
-                        <i class="sidebar-menu-icon sidebar-menu-icon--left  fa fa-user-injured"></i>
-                        <span class="sidebar-menu-text">  {{ __('admin.clients') }} </span>
-                    </a>
-                </li>
-
-                <li class="sidebar-menu-item">
-                    <a class="sidebar-menu-button" data-toggle="collapse" href="#dashboards_settings">
+                    <a class="sidebar-menu-button" data-toggle="collapse" href="#dashboards_clients">
                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i>
                         <span class="sidebar-menu-text"> {{ __('admin.client_history') }} </span>
                         <span class="ml-auto sidebar-menu-toggle-icon"></span>
                     </a>
-                    <ul class="sidebar-submenu collapse" id="dashboards_settings">
+                    <ul class="sidebar-submenu collapse" id="dashboards_clients">
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button" href="{{ route('clients-histories.index') }}">
                                 <i class="fa fa-user-injured"></i>

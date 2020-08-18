@@ -133,6 +133,7 @@ return [
     'doctor_name'           => 'Doctor Name',
     'creator'               => 'Creator',
     'choose_doctor'         => 'Choose Doctor',
+    'color'                 => 'Color',
 
 
 ];

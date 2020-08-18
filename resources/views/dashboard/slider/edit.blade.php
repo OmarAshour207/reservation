@@ -16,8 +16,8 @@
                 params: {
                     _token: '{{ csrf_token() }}',
                     path: path,
-                    width: 1200,
-                    height: 800
+                    width: 730,
+                    height: 500
                 },
                 addRemoveLinks: true,
                 removedfile:function (file) {
@@ -93,23 +93,23 @@
 
                     <div class="form-group">
                         <label for="ar_title"> {{ trans('admin.slider') }} / {{ trans('admin.ar_title') }}</label>
-                        <textarea id="ar_title" name="ar_title" rows="4" class="form-control ckeditor" placeholder="{{ trans('admin.slider') }} / {{ trans('admin.ar_title') }}...">{{ $slider->ar_title }}
+                        <textarea id="ar_title" name="ar_title" rows="4" class="form-control" placeholder="{{ trans('admin.slider') }} / {{ trans('admin.ar_title') }}...">{{ $slider->ar_title }}
                         </textarea>
                     </div>
                     <div class="form-group">
                         <label for="en_title"> {{ trans('admin.slider') }} / {{ trans('admin.en_title') }}</label>
-                        <textarea id="en_title" name="en_title" rows="4" class="form-control ckeditor" placeholder="{{ trans('admin.slider') }} / {{ trans('admin.en_title') }}...">{{ $slider->en_title }}
+                        <textarea id="en_title" name="en_title" rows="4" class="form-control" placeholder="{{ trans('admin.slider') }} / {{ trans('admin.en_title') }}...">{{ $slider->en_title }}
                         </textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="ar_desc"> {{ trans('admin.slider') }} / {{ trans('admin.ar_description') }}</label>
-                        <textarea id="ar_desc" name="ar_description" rows="4" class="form-control ckeditor" placeholder="{{ trans('admin.slider') }} / {{ trans('admin.ar_description') }}...">{{ $slider->ar_description }}
+                        <textarea id="ar_desc" name="ar_description" rows="4" class="form-control" placeholder="{{ trans('admin.slider') }} / {{ trans('admin.ar_description') }}...">{{ $slider->ar_description }}
                         </textarea>
                     </div>
                     <div class="form-group">
                         <label for="en_desc"> {{ trans('admin.slider') }} / {{ trans('admin.en_description') }}</label>
-                        <textarea id="en_desc" name="en_description" rows="4" class="form-control ckeditor" placeholder="{{ trans('admin.slider') }} / {{ trans('admin.en_description') }}...">{{ $slider->en_description }}
+                        <textarea id="en_desc" name="en_description" rows="4" class="form-control" placeholder="{{ trans('admin.slider') }} / {{ trans('admin.en_description') }}...">{{ $slider->en_description }}
                         </textarea>
                     </div>
 

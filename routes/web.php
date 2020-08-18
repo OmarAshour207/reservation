@@ -10,10 +10,11 @@ Route::post('/send/contact', 'ContactController@sendContact')->name('send.contac
 Route::get('/services', 'HomeController@servicesPage');
 Route::get('/services/{id}/{title}', 'HomeController@singleService')->name('service.show');
 
-Route::get('/projects', 'HomeController@projectsPage');
-
 Route::get('/blogs', 'HomeController@blogsPage');
 Route::get('/blogs/{id}/{title}', 'HomeController@showBlog')->name('blog.show');
+
+Route::get('/team', 'HomeController@teamPage');
+Route::get('/team/{name}', 'HomeController@searchTeam')->name('search');
 
 Route::get('/lang/{language}', 'HomeController@changeLanguage');
 
