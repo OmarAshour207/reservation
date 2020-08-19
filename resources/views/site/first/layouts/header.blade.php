@@ -70,25 +70,44 @@
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="{{ url('/') }}" class="nav-link {{ setActiveHome('') }}">{{ __('home.home') }}</a>
+                            <a href="{{ url('/') }}" class="nav-link {{ setActiveHome('') }}">
+                                <i class="icofont-home"></i> {{ __('home.home') }}
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('about') }}" class="nav-link {{ setActive('about') }}">{{ __('home.about_us') }}</a>
+                            <a href="{{ url('/appointments') }}" class="nav-link {{ setActiveHome('appointments') }}">
+                                <i class="icofont-clock-time"></i> {{ __('home.appointments') }}
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('services') }}" class="nav-link {{ setActive('services') }}">{{ __('home.our_services') }}</a>
+                            <a href="{{ url('about') }}" class="nav-link {{ setActive('about') }}">
+                                <i class="icofont-info-circle"></i>{{ __('home.about_us') }}
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('team') }}" class="nav-link {{ setActive('team') }}">{{ __('admin.team_members') }}</a>
+                            <a href="{{ url('services') }}" class="nav-link {{ setActive('services') }}">
+                                <i class="icofont-papers"></i> {{ __('home.services') }}
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('blogs') }}" class="nav-link">{{ __('home.blogs') }}</a>
+                            <a href="{{ url('team') }}" class="nav-link {{ setActive('team') }}">
+                                <i class="icofont-users"></i>{{ __('home.team') }}
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('contact-us') }}" class="nav-link">{{ __('home.contact_us') }}</a>
+                            <a href="{{ url('blogs') }}" class="nav-link">
+                                <i class="icofont-book"></i>{{ __('home.blogs') }}
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link dropdown-toggle">{{ __('admin.languages') }}</a>
+                            <a href="{{ url('contact-us') }}" class="nav-link">
+                                <i class="icofont-phone"></i> {{ __('home.contact_us') }}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link dropdown-toggle">
+                                <i class="icofont-globe"></i>
+                            </a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item">
                                     <a href="{{ url('lang/ar') }}" class="nav-link"><i class="icofont-flag"></i> {{ __('home.arabic') }}</a>
@@ -100,10 +119,10 @@
                         </li>
                         @if (auth()->check())
                             <li class="nav-item">
-                                <a href="#" class="nav-link dropdown-toggle">{{ auth()->user()->name }} <i class="icofont-ui-user"></i></a>
+                                <a href="#" class="nav-link dropdown-toggle"> <i class="icofont-ui-user"></i></a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link"> <i class="icofont-edit"></i> {{ __('home.edit_profile') }}</a>
+                                    <a href="{{ route('show.profile', ['id' => auth()->user()->id]) }}" class="nav-link"> <i class="icofont-edit"></i> {{ __('home.edit_profile') }}</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault();

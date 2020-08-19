@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'] , function () {
 
@@ -57,6 +58,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'] , function () {
         Route::resource('accounts', 'AccountController');
 
         Route::resource('reservations', 'ReservationController');
+
+        Route::resource('appointments', 'AppointmentController');
 
     });
 });

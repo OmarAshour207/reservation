@@ -75,6 +75,13 @@
                     </a>
                 </li>
 
+                <li class="sidebar-menu-item">
+                    <a class="sidebar-menu-button" href="{{ route('appointments.index') }}">
+                        <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-user-injured"></i>
+                        <span class="sidebar-menu-text">  {{ __('admin.clients_appointments') }} </span>
+                    </a>
+                </li>
+
                 @if (admin()->user()->role == 0)
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button" href="{{ route('accounts.index') }}">

@@ -16,6 +16,14 @@ Route::get('/blogs/{id}/{title}', 'HomeController@showBlog')->name('blog.show');
 Route::get('/team', 'HomeController@teamPage');
 Route::get('/team/{name}', 'HomeController@searchTeam')->name('search');
 
+Route::get('profile/{id}', 'ProfileController@showProfile')->name('show.profile');
+Route::post('edit/profile/{id}', 'ProfileController@editProfile')->name('edit.profile');
+
+Route::get('appointments', 'AppointmentController@showPage');
+Route::get('appointments/days', 'AppointmentController@showDays');
+Route::get('appointments/times', 'AppointmentController@showTimes');
+Route::post('/book/appointment', 'AppointmentController@bookAppointment');
+
 Route::get('/lang/{language}', 'HomeController@changeLanguage');
 
 Auth::routes();

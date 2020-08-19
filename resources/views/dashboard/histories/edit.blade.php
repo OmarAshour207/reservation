@@ -14,8 +14,8 @@
                 params: {
                     _token: '{{ csrf_token() }}',
                     path: 'clients-histories',
-                    width: 100,
-                    height: 100
+                    width: 1280,
+                    height: 854
                 },
                 addRemoveLinks: true,
                 removedfile:function (file) {

@@ -1,5 +1,7 @@
 <?php
 
+use function PHPSTORM_META\map;
+
 return [
     'menu'          => 'Menu',
     'dashboard'     => 'Dashboard',
@@ -125,7 +127,7 @@ return [
     'responsible_doctor'    => 'Responsible Doctor',
     'choose_client'         => 'Choose Client',
     'accounts'              => 'Accounts',
-    'reservations'          => 'Reservations',
+    'reservations'          => 'Clinic Time',
     'day'                   => 'Day',
     'start_time'            => 'Start Time',
     'end_time'              => 'End Time',
@@ -134,6 +136,16 @@ return [
     'creator'               => 'Creator',
     'choose_doctor'         => 'Choose Doctor',
     'color'                 => 'Color',
+    'clients_appointments'  => 'Clients Appointments',
+    'appointments'          => 'Appointments',
+    'client_name'           => 'Client Name',
+    'time'                  => 'Time',
+    'status'                => 'Status',
+    'choose_status'         => 'Choose Status',
+    'rejected'              => 'Rejected',
+    'approved'              => 'Approved',
+    'pending'               => 'Pending',
+
 
 
 ];

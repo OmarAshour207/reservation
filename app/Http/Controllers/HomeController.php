@@ -22,7 +22,6 @@ class HomeController extends Controller
     {
         session()->has('lang') ? session()->forget('lang') : '';
         $language == 'ar' ? session()->put('lang', 'ar') : session()->put('lang', 'en');
-//        dd(session('lang'));
         return redirect()->back();
     }
 

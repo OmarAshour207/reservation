@@ -136,5 +136,15 @@ return [
     'doctor_name'           => 'أسم الدكتور',
     'creator'               => 'الصانع',
     'choose_doctor'         => 'أختر الدكتور',
+    'color'                 => 'اللون',
+    'clients_appointments'  => 'مواعيد العملاء',
+    'appointments'          => 'المواعيد',
+    'client_name'           => 'أسم العميل',
+    'time'                  => 'الوقت',
+    'status'                => 'الحاله',
+    'choose_status'         => 'أختر الحاله',
+    'rejected'              => 'مرفوض',
+    'approved'              => 'مقبول',
+    'pending'               => 'تحت الأنتظار',
 
 ];

@@ -45,6 +45,9 @@
 
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="{{ asset('site/css/responsive.css') }}">
+
+    <link href="{{ asset('dashboard/css/noty.css') }}" rel="stylesheet">
+    <script src="{{ asset('dashboard/js/noty.js') }}" type="text/javascript"></script>
     @stack('styles')
 
 </head>
@@ -64,6 +67,8 @@
     <!-- End Preloader -->
 
     @include('site.first.layouts.header')
+
+    @include('dashboard.partials.session')
 
     @yield('content')
 
@@ -97,6 +102,7 @@
     <!-- Custom JS -->
     <script src="{{ asset('site/js/custom.js') }}"></script>
 
+    @stack('scripts')
 
 </body>
 </html>
