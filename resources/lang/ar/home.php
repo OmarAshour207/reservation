@@ -96,5 +96,7 @@ return [
     'rejected'              => 'مرفوض',
     'approved'              => 'مقبول',
     'pending'               => 'تحت الانتظار',
+    'ambulance'             => 'عربه الأسعاف',
+    'using_name'            => 'الأسم المستخدم'
 
 ];

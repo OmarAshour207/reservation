@@ -13,7 +13,9 @@ class ClientHistoryController extends Controller
 {
     public function index()
     {
-        $clients_histories = ClientHistory::with('user', 'doctor')->paginate(10);
+        $clients_histories = ClientHistory::with('user', 'doctor')
+                    ->whenSearch(request()->search)
+                    ->paginate(10);
         return view('dashboard.histories.index', compact('clients_histories'));
     }
 
@@ -43,6 +45,12 @@ class ClientHistoryController extends Controller
         ClientHistory::create($data);
         session()->flash('success', __('admin.added_successfully'));
         return redirect()->route('clients-histories.index');
+    }
+
+    public function showDoctors(Request $request)
+    {
+        $clients_histories = ClientHistory::with('doctor')->where('user_id', $request->route('id'))->paginate(10);
+        return view('dashboard.histories.show', compact('clients_histories'));
     }
 
     public function edit(ClientHistory $clients_history)

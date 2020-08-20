@@ -1,370 +1,351 @@
 @extends('site.second.layouts.app')
 
 @section('content')
-    <!-- Content -->
-    <div class="page-content bg-white">
+    <!-- Home Slider -->
+    <div class="home-slider home-slider-two owl-theme owl-carousel">
+        @php
+            $numbers = ['two', 'three', 'four'];
+        @endphp
+        @foreach ($sliders as $index => $slider)
+        <div class="slider-item slider-item-img-{{ $numbers[$index] }}" style="background-image: url('{{ $slider->slider_image }}') !important">
+                <div class="d-table">
+                    <div class="d-table-cell">
+                        <div class="container">
+                            <div class="slider-text">
+                                <div class="slider-shape">
+                                    <img src="{{ asset('site/img/home-one/5.png') }}" alt="Shape">
+                                </div>
+                                @php
+                                    $title = session('lang') . '_title';
+                                    $desc = session('lang') . '_description';
+                                @endphp
+                                <h1>{{ $slider->$title }}</h1>
+                                <p> {{ $slider->$desc }} </p>
+                                <div class="common-btn">
+                                    <a href="{{ url('appointments') }}"> {{ __('home.get_appointment') }} </a>
+                                    <a class="cmn-btn-right" href="{{ url('about') }}">{{ __('home.learn_more') }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    <!-- End Home Slider -->
 
-        <!-- Slider -->
-        <div class="main-slider style-two default-banner" id="home">
-            <div class="tp-banner-container">
-                <div class="tp-banner">
-                    <div id="rev_slider_1175_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="duotone192" data-source="gallery" style="background-color:transparent;padding:0px;">
-                        <!-- START REVOLUTION SLIDER 5.3.0.2 fullscreen mode -->
-                        <div id="rev_slider_1175_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.3.0.2">
-                            <ul>
-                                @foreach($sliders as $index => $slider)
-                                <!-- SLIDE  -->
-                                <li data-index="rs-{{ $index+3239 }}" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb="images/main-slider/slide20.jpg"  data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="300" data-fsslotamount="7" data-saveperformance="off"  data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-                                    <!-- MAIN IMAGE -->
-                                    <img src="{{ $slider->slider_image }}"  alt=""  data-lazyload="{{ $slider->slider_image }}" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="3" class="rev-slidebg" data-no-retina>
-                                    <!-- LAYERS -->
-                                    <div class="tp-caption tp-shape tp-shapewrapper " id="slide-100-layer"
-                                         data-x="['center','center','center','center']"
-                                         data-hoffset="['0','0','0','0']"
-                                         data-y="['middle','middle','middle','middle']"
-                                         data-voffset="['0','0','0','0']"
-                                         data-width="full" data-height="full"
-                                         data-whitespace="nowrap"
-                                         data-type="shape"
-                                         data-basealign="slide"
-                                         data-responsive_offset="off"
-                                         data-responsive="off"
-                                         data-frames='[{"from":"opacity:0;","speed":1000,"to":"o:1;","delay":0,"ease":"Power4.easeOut"},{"delay":"wait","speed":1000,"to":"opacity:0;","ease":"Power4.easeOut"}]'
-                                         data-textAlign="['left','left','left','left']"
-                                         data-paddingtop="[0,0,0,0]"
-                                         data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]"
-                                         data-paddingleft="[0,0,0,0]"
-                                         style="z-index: 2;background-color:rgba(0, 0, 0, 0.1);border-color:rgba(0, 0, 0, 0);border-width:0px; background-image:url({{ asset('site/images/overlay/rrdiagonal-line.png') }})"> </div>
-                                    <!-- BACKGROUND VIDEO LAYER -->
-                                    <div class="rs-background-video-layer"
-                                         data-forcerewind="on"
-                                         data-volume="mute"
-                                         data-videowidth="100%"
-                                         data-videoheight="100%"
-                                         data-videomp4="{{ asset('site/images/background/bg-video.png') }}"
-                                         data-videopreload="auto"
-                                         data-videoloop="loop"
-                                         data-aspectratio="16:9"
-                                         data-autoplay="true"
-                                         data-autoplayonlyfirsttime="false"
-                                    ></div>
-                                    <!-- LAYER NR. 1 -->
-                                    @php
-                                        $title = session('lang') . '_title';
-                                        $desc = session('lang') . '_description';
-                                    @endphp
-                                    <div class="tp-caption   rs-parallaxlevel-4"
-                                         id="slide-3239-layer-1"
-                                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                         data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
-                                         data-fontsize="['60','60','40','20']"
-                                         data-lineheight="['75','70','50','30']"
-                                         data-width="['720','640','480','300']"
-                                         data-height="none"
-                                         data-whitespace="normal"
-
-                                         data-type="text"
-                                         data-responsive_offset="off"
-                                         data-responsive="off"
-                                         data-frames='[{"from":"y:20px;sX:0.9;sY:0.9;opacity:0;","speed":1000,"to":"o:1;","delay":500,"ease":"Power4.easeOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
-                                         data-textAlign="['center','center','center','center']"
-                                         data-paddingtop="[0,0,0,0]"
-                                         data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]"
-                                         data-paddingleft="[0,0,0,0]"
-
-                                         style="z-index: 5; min-width: 720px; max-width: 720px; white-space: normal; font-size: 60px; line-height: 70px;  color: rgba(255, 255, 255, 1.00);font-family:Poppins;border-width:0px; font-weight:600;">{!! $slider->$title !!} <br/> {!! $slider->$desc !!}
-                                    </div>
-                                </li>
-                                <!-- SLIDE  -->
-                                @endforeach
-                            </ul>
-                            <div class="tp-bannertimer" style="height: 8px; background-color: rgba(255, 255, 255, 0.25);"></div>
+    <!-- Emergency -->
+    <div class="emergency-area">
+        <div class="container">
+            <div class="row emergency-bg">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="emergency-item">
+                        <i class="icofont-ui-call"></i>
+                        <div class="emergency-inner">
+                            <h3>{{ __('home.emergency_call') }}</h3>
+                            <p> {{ setting('phone') }} </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="emergency-item">
+                        <i class="icofont-location-pin"></i>
+                        <div class="emergency-inner">
+                            <h3>{{ __('admin.address') }}</h3>
+                            <p>{{ setting(session('lang') . '_address') }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 offset-sm-3 offset-lg-0 col-lg-4">
+                    <div class="emergency-item">
+                        <i class="icofont-ambulance-crescent"></i>
+                        <div class="emergency-inner">
+                            <h3>{{ __('home.ambulance') }}</h3>
+                            <p> {{ setting('phone') }} </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Slider END -->
+    </div>
+    <!-- End Emergency -->
 
-        @if ($page_filter != null)
-            <!-- contact area -->
-            <div class="content-block">
-                <!-- Our Services -->
-                <div class="section-full content-inner bg-gray">
-                    @if (in_array('our_services', $page_filter))
-                        <div class="container">
-                        <div class="row">
-                            @foreach($services as $index => $service)
+    @if ($page_filter != null)
+        @if (in_array('about', $page_filter))
+            <!-- About -->
+            <section class="welcome-area ptb-100">
+                <div class="container-fluid p-0">
+                    <div class="row m-0">
+                        <div class="col-lg-6 p-0">
+                            <div class="welcome-item welcome-left" style="background-image: url('{{ $aboutUs->about_image }}') !important">
+                                <img src="{{ $aboutUs->about_image }}" alt="image">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 p-0">
+                            <div class="welcome-item welcome-right">
+                                <div class="section-title-two">
+                                    <span> {{ __('home.about_us') }} </span>
+                                    @php
+                                        $desc = session('lang') . '_description';
+                                    @endphp
+                                    <h2>{{ $aboutUs->$desc }}</h2>
+                                </div>
+                                <ul>
+                                    @foreach ($services as $index => $service)
+                                        <li class="wow fadeInUp" data-wow-delay=".5s">
+                                            <i class="icofont-stretcher"></i>
+                                            <div class="welcome-inner">
+                                                @php
+                                                    $title = session('lang') . '_title';
+                                                    $desc = session('lang') . '_description';
+                                                @endphp
+                                                <h3> {{ $service->$title }} </h3>
+                                                <p> {{ $service->$desc}} </p>
+                                            </div>
+                                        </li>
+                                        @if ($index == 3)
+                                            @break
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End About -->
+        @endif
+
+        <!-- Expertise -->
+        <section class="expertise-area pb-70">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Expertise</h2>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="expertise-item">
+                            <div class="row">
+                                <div class="col-sm-6 col-lg-6 wow fadeInUp" data-wow-delay=".3s">
+                                    <a href="blog-details.html">
+                                        <div class="expertise-inner">
+                                            <i class="icofont-doctor-alt"></i>
+                                            <h3>Certified Doctors</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-sm-6 col-lg-6 wow fadeInUp" data-wow-delay=".5s">
+                                    <a href="blog-details.html">
+                                        <div class="expertise-inner">
+                                            <i class="icofont-stretcher"></i>
+                                            <h3>Emergency</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-sm-6 col-lg-6 wow fadeInUp" data-wow-delay=".3s">
+                                    <a href="blog-details.html">
+                                        <div class="expertise-inner">
+                                            <i class="icofont-network"></i>
+                                            <h3>Teachnology</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-sm-6 col-lg-6 wow fadeInUp" data-wow-delay=".5s">
+                                    <a href="blog-details.html">
+                                        <div class="expertise-inner">
+                                            <i class="icofont-ambulance-cross"></i>
+                                            <h3>Ambulance</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="expertise-item">
+                            <div class="expertise-right">
+                                <img src="{{ asset('site//img/home-one/6.jpg') }}" alt="Expertise">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Expertise -->
+
+        @if (in_array('our_services', $page_filter))
+            <!-- Services -->
+            <section class="services-area pb-70">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>{{ __('home.our_services') }}</h2>
+                    </div>
+                    <div class="row">
+                        @foreach($services as $service)
+                            <div class="col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay=".5s">
+                            <div class="service-item">
                                 @php
                                     $title = session('lang') . '_title';
                                     $desc = session('lang') . '_description';
                                 @endphp
-                                <div class="col-lg-4 col-md-6 col-sm-6 m-b30 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.6s">
-                                    <div class="dlab-box service-box-2">
-                                        <div class="dlab-media radius-sm dlab-img-overlay1 dlab-img-effect rotate">
-                                            <a href="{{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }}">
-                                                <img src="{{ $service->service_image }}" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="dlab-info">
-                                            <h4 class="title">
-                                                <a href="{{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }}">
-                                                    {{ $service->$title }}
-                                                </a>
-                                            </h4>
-                                            <p> {{ $service->$desc }} </p>
-                                            <a href="{{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }}" class="site-button btnhover14">
-                                                {{ __('home.read_more') }}
-                                            </a>
-                                        </div>
-                                    </div>
+                                <div class="service-front">
+                                    <i class="icofont-prescription"></i>
+                                    <h3>{{ $service->$title }}</h3>
+                                    <p>{{ $service->$desc }}</p>
                                 </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    @endif
-                </div>
-                <!-- Our Services END -->
-
-                <!-- About -->
-                <div class="section-full content-inner-2 bg-primary wow fadeIn" data-wow-duration="2s" data-wow-delay="0.2s" style="background-image:url({{ asset('site/images/background/map-bg.png') }});">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 text-center service-info">
-                                <h2 class="title text-white">Amazing things happen to your business when we connect those dots of utility and value.</h2>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                <div class="service-end">
+                                    <i class="icofont-prescription"></i>
+                                    <h3>{{ $service->$title }}</h3>
+                                    <p>{{ $service->$desc }}</p>
+                                    <a href="{{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }}">{{ __('home.read_more') }}</a>
+                                </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
                 </div>
-                <!-- About END -->
-
-                <!-- About -->
-                @if (in_array('about', $page_filter))
-                    <!-- About Us -->
-                        <div class="section-full content-inner bg-white">
-                            <div class="container">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-6 col-md-6 m-b30 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.3s">
-                                        <div class="our-story">
-                                            <span> {{ __('home.about_us') }} </span>
-                                            <h4 class="title"> {{ __('home.about_us_description') }} </h4>
-                                            <p>
-                                                @php $desc = session('lang') . '_description'; @endphp
-                                                {{ $aboutUs->$desc }}
-                                            </p>
-                                            <a href="{{ url('about') }}" class="site-button btnhover14">{{ __('home.read_more') }}</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 m-b30 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.6s">
-                                        <img src="{{ $aboutUs->about_image }}" class="radius-sm" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- About Us End -->
-                @endif
-                <!-- About End -->
-
-                <!-- Contacts -->
-                @if (in_array('contacts', $page_filter))
-                    <!-- Call To Action -->
-                        <div class="section-full call-action style1 bg-primary wow fadeIn" data-wow-duration="2s" data-wow-delay="0.2s">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-9 text-white">
-                                        @php $desc = session('lang'). '_description'; @endphp
-                                        <h2 class="title">{!! $contactUs->$desc !!} </h2>
-                                    </div>
-                                    <div class="col-lg-3 d-flex">
-                                        <a href="{{ url('contact-us') }}" class="site-button black align-self-center ml-auto btnhover14">{{ __('home.contact_us') }}</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Call To Action End -->
-                @endif
-                <!-- Contacts End -->
-
-                <!-- Projects -->
-                @if (in_array('our_projects', $page_filter))
-                    <div class="section-full content-inner-2 bg-gray wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.4s">
-                        <div class="container">
-                            <div class="section-head text-black text-center">
-                                <h2 class="title">{{ __('home.our_projects') }}</h2>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="img-carousel-dots-nav owl-theme owl-dots-none owl-carousel owl-btn-center-lr owl-btn-3">
-                                        @foreach($projects as $project)
-                                        <div class="item">
-                                            @php
-                                                $title = session('lang') . '_title';
-                                            @endphp
-                                            <div class="dlab-box project-bx">
-                                                <div class="dlab-media radius-sm dlab-img-overlay1 dlab-img-effect zoom">
-                                                    <a href="javascript:void(0)">
-                                                        <img src="{{ $project->project_image }}" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="dlab-info">
-                                                    <h5 class="dlab-title"><a href="javascript:void(0)"> {{ $project->$title }} </a></h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-                <!-- Projects End -->
-
-                <!-- Our Team -->
-                @if (in_array('team_members', $page_filter))
-                    <div class="section-full bg-white content-inner">
-                        <div class="container">
-                            <div class="section-head text-black text-center">
-                                <h2 class="title">{{ __('home.meet_team') }}</h2>
-                            </div>
-                            <div class="row dlab-team10-area">
-                                @foreach($teamMembers as $teamMember)
-                                <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.4s">
-                                    @php
-                                        $name = session('lang') . '_name';
-                                        $title = session('lang') . '_title';
-                                    @endphp
-                                    <div class="dlab-box m-b30 dlab-team10">
-                                        <div class="dlab-media">
-                                            <a href="javascript:void(0)">
-                                                <img alt="" src="{{ $teamMember->member_image }}">
-                                            </a>
-                                        </div>
-                                        <div class="dlab-info">
-                                            <h4 class="dlab-title"><a href="javascript:void(0)">{{ $teamMember->$name }}</a></h4>
-                                            <span class="dlab-position">{{ $teamMember->$title }}</span>
-                                            <ul class="dlab-social-icon">
-                                                <li></li>
-                                                <li></li>
-                                                <li></li>
-                                                <li></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                @endif
-                <!-- Our Team End -->
-
-                <!-- Testimonials blog -->
-                @if (in_array('testimonials', $page_filter))
-                    <div class="section-full content-inner-2 bg-gray wow fadeIn" data-wow-duration="2s" data-wow-delay="0.3s">
-                        <div class="container">
-                            <div class="section-head text-black text-center">
-                                <h2 class="title">{{ trans('home.what_people_say') }}</h2>
-                            </div>
-                            <div class="testimonial-six owl-loaded owl-theme owl-carousel owl-none dots-style-2">
-                                @foreach($testimonials as $testimonial)
-                                <div class="item">
-                                    <div class="testimonial-8">
-                                        @php
-                                            $desc = session('lang') . '_description';
-                                            $name = session('lang') . '_name';
-                                            $title = session('lang') . '_title';
-                                        @endphp
-                                        <div class="testimonial-text">
-                                            <p>{{ $testimonial->$desc }}</p>
-                                        </div>
-                                        <div class="testimonial-detail clearfix">
-                                            <div class="testimonial-pic radius shadow"><img src="{{ $testimonial->testimonial_image }}" width="100" height="100" alt=""></div>
-                                            <h5 class="testimonial-name m-t0 m-b5">{{ $testimonial->$name }}</h5> <span class="testimonial-position">{{ $testimonial->$title }}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                     </div>
-                @endif
-                <!-- Testimonials blog End -->
-
-                <!-- Latest Blogs -->
-                @if (in_array('latest_blog', $page_filter))
-                    <div class="section-full content-inner bg-white wow fadeIn" data-wow-duration="2s" data-wow-delay="0.6s">
-                        <div class="container">
-                            <div class="section-head text-black text-center">
-                                <h2 class="title">{{ __('home.latest_blog') }}</h2>
-                            </div>
-                            <div class="blog-carousel owl-carousel owl-btn-3 owl-btn-center-lr">
-                                @foreach($blogs as $blog)
-                                <div class="item">
-                                    @php
-                                        $title = session('lang') . '_title';
-                                        $author = session('lang') . '_author';
-                                        $content = session('lang') . '_content';
-                                    @endphp
-                                    <div class="blog-post blog-grid blog-rounded blog-effect1">
-                                        <div class="dlab-post-media dlab-img-effect rotate">
-                                            <a href="{{ url('blogs/' . $blog->id .'/'.$blog->$title) }}">
-                                                <img src="{{ $blog->blog_image }}" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="dlab-info p-a20 border-1">
-                                            <div class="dlab-post-meta">
-                                                <ul>
-                                                    <li class="post-date">
-                                                        <strong>{{ $blog->created_at->format('d M') }}</strong>
-                                                        <span> {{ $blog->created_at->format('Y') }}</span>
-                                                    </li>
-                                                    <li class="post-author"> {{ __('home.by') }} <a href="javascript:void(0);">{{ $blog->$author }}</a> </li>
-                                                </ul>
-                                            </div>
-                                            <div class="dlab-post-title">
-                                                <h4 class="post-title"><a href="{{ url('blogs/' . $blog->id .'/'.$blog->$title) }}"> {{ $blog->$title }} </a></h4>
-                                            </div>
-                                            <div class="dlab-post-text">
-                                                {!!  substr($blog->$content, 0, 20) !!}
-                                            </div>
-                                            <div class="dlab-post-readmore">
-                                                <a href="{{ url('blogs/' . $blog->id .'/'.$blog->$title) }}" title="{{ $blog->$title }}" rel="bookmark" class="site-button btnhover14">{{ __('home.read_more') }}</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                @endif
-                <!-- Latest News End -->
-
-                <!-- Call To Action -->
-                @if (in_array('contacts', $page_filter))
-                    <div class="section-full call-action bg-primary wow fadeIn" data-wow-duration="2s" data-wow-delay="0.9s">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-9 text-white">
-                                    @php $desc = session('lang').'_description';@endphp
-                                    <h2 class="title">{{ $aboutUs->$desc }} </h2>
-                                </div>
-                                <div class="col-lg-3 d-flex">
-                                    <a href="{{ url('contact-us') }}" class="site-button white align-self-center outline ml-auto outline-2 btnhover14">{{ __('home.contact_us') }}</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-            <!-- Call To Action End -->
-
-            </div>
+            </section>
+            <!-- End Services -->
         @endif
 
-    </div>
-    <!-- Content END-->
+
+        @if (in_array('our_projects', $page_filter))
+            @php
+                $title = session('lang') . '_title';
+            @endphp
+            <!-- Video -->
+            <div class="video-wrap">
+                <div class="container-fluid p-0">
+                    <div class="tab-content" id="pills-tabContent">
+                        @foreach($projects as $index => $project)
+                        @php
+                        $title = session('lang') . '_title';
+                        $desc = session('lang') . '_description';
+                        @endphp
+                        <div class="tab-pane fade show {{ $index == 0 ? 'active' : '' }}" id="pills-{{ $index }}" role="tabpanel" aria-labelledby="pills-{{ $index }}-tab">
+                            <div class="video-area">
+                                <div class="d-table">
+                                    <div class="d-table-cell">
+                                        <div class="container">
+                                            <div class="video-item">
+                                                <a href="http://www.youtube.com/watch?v=0O2aH4XLbto" class="popup-youtube">
+                                                    <i class="icofont-ui-play"></i>
+                                                </a>
+                                                <div class="video-content">
+                                                    <h3>{{ $project->$title }}</h3>
+                                                    <p> {{ $project->$desc }} </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="container">
+                    <ul class="video-nav nav nav-pills" id="pills-tab" role="tablist">
+                        @foreach($projects as $index => $project)
+                            @php
+                                $title = session('lang') . '_title';
+                            @endphp
+                            <li class="nav-item video-nav-item">
+                                <a class="nav-link {{ $index == 0 ? 'active' : '' }}" id="pills-{{ $index }}-tab" data-toggle="pill" href="#pills-{{ $index }}" role="tab" aria-controls="pills-{{ $index }}" aria-selected="true">{{ $project->$title }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+            <!-- End Video -->
+        @endif
+
+        @if (in_array('team_members', $page_filter))
+            <!-- Team Members -->
+            <section class="doctors-area ptb-100">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>{{ __('home.meet_team') }}</h2>
+                    </div>
+                    <div class="row">
+                        @foreach($teamMembers as $teamMember)
+                            <div class="col-sm-6 col-lg-4 wow fadeInUp" data-wow-delay=".5s">
+                                <div class="doctor-item">
+                                    <div class="doctor-top">
+                                        <img src="{{ $teamMember->member_image }}" alt="Doctor">
+                                        <a href="javascript:void(0);">{{ __('home.get_appointment') }}</a>
+                                    </div>
+                                    <div class="doctor-bottom">
+                                        <h3>
+                                            <a href="javascript:void(0);"> {{ $teamMember->role == 1 ? 'Dr' : 'Nur' }}  </a>
+                                        </h3>
+                                        @php $name = session('lang') . '_name'; @endphp
+                                        <span>{{ $teamMember->$name }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="doctor-btn">
+                        <a href="doctor.html">See All</a>
+                    </div>
+                </div>
+            </section>
+            <!-- End Team Members -->
+        @endif
+
+        @if (in_array('latest_blog', $page_filter))
+            <!-- Blog -->
+            <section class="blog-area pt-100 pb-70">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>{{ __('home.latest_blog') }}</h2>
+                    </div>
+                    <div class="row">
+                        @foreach($blogs as $blog)
+                            <div class="col-sm-6 col-lg-4 wow fadeInUp" data-wow-delay=".5s">
+                                <div class="blog-item">
+                                    @php
+                                        $title = session('lang') . '_title';
+                                        $content = session('lang') . '_content';
+                                    @endphp
+                                    <div class="blog-top">
+                                        <a href="{{ route('blog.show', ['id' => $blog->id, 'title' => $blog->$title]) }}">
+                                            <img src="{{ $blog->blog_image }}" alt="Blog">
+                                        </a>
+                                    </div>
+                                    <div class="blog-bottom">
+                                        <h3>
+                                            <a href="{{ route('blog.show', ['id' => $blog->id, 'title' => $blog->$title]) }}"> {{ $blog->$title }} </a>
+                                        </h3>
+                                        <p>{!! substr($blog->content, 0, 50) !!} </p>
+                                        <ul>
+                                            <li>
+                                                <a href="{{ route('blog.show', ['id' => $blog->id, 'title' => $blog->$title]) }}">
+                                                    {{ __('home.read_more') }}
+                                                    <i class="icofont-long-arrow-right"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <i class="icofont-calendar"></i>
+                                                {{ $blog->created_at->format('d M Y') }}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
+            <!-- End Blog -->
+        @endif
+
+    @endif
+
 @endsection

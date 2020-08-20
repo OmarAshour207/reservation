@@ -110,10 +110,10 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item">
-                                    <a href="{{ url('lang/ar') }}" class="nav-link"><i class="icofont-flag"></i> {{ __('home.arabic') }}</a>
+                                    <a href="{{ url('lang/ar') }}" class="nav-link allowedLink"><i class="icofont-flag"></i> {{ __('home.arabic') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('lang/en') }}" class="nav-link"><i class="icofont-flag"></i> {{ __('home.english') }}</a>
+                                    <a href="{{ url('lang/en') }}" class="nav-link allowedLink"><i class="icofont-flag"></i> {{ __('home.english') }}</a>
                                 </li>
                             </ul>
                         </li>

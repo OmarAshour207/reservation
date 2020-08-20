@@ -39,6 +39,7 @@
                             <th style="width: 40px;"> {{ trans('admin.day') }} </th>
                             <th style="width: 40px;"> {{ trans('admin.time') }} </th>
                             <th style="width: 40px;"> {{ trans('admin.status') }} </th>
+                            <th style="width: 40px;"> {{ trans('admin.change_status') }} </th>
                             <th style="width: 30px;" > {{ trans('admin.action') }} </th>
                         </tr>
                         </thead>
@@ -59,7 +60,9 @@
                             <td style="width: 40px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ ucfirst($appointment->user->name) }}
+                                        <a href="{{ url('admin/client/doctors/'. $appointment->user->id) }}">
+                                            {{ ucfirst($appointment->user->name) }}
+                                        </a>
                                     </div>
                                 </div>
                             </td>
@@ -89,7 +92,7 @@
                             <td style="width: 40px">
                                 <div class="d-flex align-items-center">
                                     @php
-                                        $buttons = ['rejected', 'success', 'warning'];
+                                        $buttons = ['danger', 'success', 'warning'];
                                     @endphp
                                     <div class="d-flex align-items-center btn btn-{{ $buttons[$appointment->status] }}">
                                         @if($appointment->status == 2)
@@ -103,10 +106,32 @@
                                 </div>
                             </td>
 
+                            <td style="width: 40px;">
+                                <div class="d-flex align-items-center">
+                                    @if ($appointment->status == 2)
+                                    <div class="d-flex align-items-center">
+                                        <a href="#" class="btn btn-sm btn-link status"
+                                        data-id="{{ $appointment->id }}"
+                                        data-status= "0"
+                                        data-url="{{ route('change.status') }}">
+                                            <button class="btn btn-danger">
+                                                {{ __('admin.reject') }}
+                                            </button>
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-link status"
+                                        data-id="{{ $appointment->id }}"
+                                        data-status= "1"
+                                        data-url="{{ route('change.status') }}">
+                                            <button class="btn btn-success">
+                                                {{ __('admin.approve') }}
+                                            </button>
+                                        </a>
+                                    </div>
+                                    @endif
+                                </div>
+                            </td>
+
                             <td style="width: 30px;">
-                                <a href="{{ route('appointments.edit', $appointment->id) }}" class="btn btn-sm btn-link">
-                                    <i class="fa fa-edit fa-2x"></i>
-                                </a>
                                 <form action="{{ route('appointments.destroy', $appointment->id) }}" method="post" style="display: inline-block">
                                     @csrf
                                     @method('delete')
@@ -129,3 +154,27 @@
         <!-- // END drawer-layout__content -->
     </div>
 @endsection
+
+@push('admin_scripts')
+    <script>
+        $(document).ready(function(){
+            $(document).on('click', '.status',function(e){
+                e.preventDefault();
+                url = $(this).data('url');
+                id = $(this).data('id');
+                status = $(this).data('status');
+                $.ajax({
+                    url: url,
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        id: id,
+                        status:status
+                    }, success: function() {
+                        window.location.reload();
+                    }
+                });
+            });
+        });
+    </script>
+@endpush

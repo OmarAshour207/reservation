@@ -58,7 +58,9 @@
                             <td style="width: 40px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ $account->name }}
+                                        <a href="{{ route('accounts.show', $account->id) }}">
+                                            {{ $account->name }}
+                                        </a>
                                     </div>
                                 </div>
                             </td>

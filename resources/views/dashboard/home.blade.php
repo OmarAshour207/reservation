@@ -62,9 +62,9 @@
             </div>
             <div class="card-group">
                 <div class="card card-body text-center">
-                    <div class="mb-1"><i class="icon-muted icon-40pt fa fa-paint-brush"></i></div>
-                    <div class="text-amount">{{ $website_color }}</div>
-                    <div class="card-header__title  mb-2">{{ __('admin.website_color') }}</div>
+                    <div class="mb-1"><i class="icon-muted icon-40pt fa fa-clock"></i></div>
+                    <div class="text-amount">{{ $appointment_count }}</div>
+                    <div class="card-header__title  mb-2">{{ __('admin.total_appointments') }}</div>
                 </div>
                 <div class="card card-body text-center">
                     <div class="mb-1"><i class="icon-muted icon-40pt fa fa-user-friends"></i></div>
@@ -134,11 +134,13 @@
             type: 'bar',
             data: {
                 labels: [ '{{ __('admin.home') }}', '{{ __('admin.about') }}', '{{ __('admin.our_services') }}',
-                    '{{ __('admin.our_projects') }}', '{{ __('admin.blogs') }}', '{{ __('admin.contacts') }}' ],
+                    '{{ __('admin.our_projects') }}', '{{ __('admin.blogs') }}', '{{ __('admin.contacts') }}',
+                    '{{ __('admin.appointments') }}' ],
                 datasets: [{
                     label: '{{ __('admin.pages_visitors') }}',
                     data: [{{ $visited_pages_in_month[0] }}, {{ $visited_pages_in_month[1] }}, {{ $visited_pages_in_month[2] }},
-                        {{ $visited_pages_in_month[3] }},{{ $visited_pages_in_month[4] }},{{ $visited_pages_in_month[5] }}],
+                        {{ $visited_pages_in_month[3] }},{{ $visited_pages_in_month[4] }},{{ $visited_pages_in_month[5] }},
+                        {{ $visited_pages_in_month[6] }} ],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',

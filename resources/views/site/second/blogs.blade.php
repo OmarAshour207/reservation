@@ -1,77 +1,67 @@
-@extends('site.second.layouts.app')
+@extends('site.first.layouts.app')
 
 @section('content')
-    <!-- Content -->
-    <div class="page-content bg-white">
-        <!-- inner page banner -->
-        <div class="dlab-bnr-inr overlay-black-middle bg-pt" style="background-image:url({{ asset('site/images/banner/bnr1.jpg') }});">
-            <div class="container">
-                <div class="dlab-bnr-inr-entry">
-                    <h1 class="text-white">{{ __('home.blogs') }}</h1>
-                    <!-- Breadcrumb row -->
-                    <div class="breadcrumb-row">
-                        <ul class="list-inline">
-                            <li><a href="{{ url('/') }}">{{ __('home.home') }}</a></li>
-                            <li>{{ __('home.blogs') }}</li>
-                        </ul>
-                    </div>
-                    <!-- Breadcrumb row END -->
+    <!-- Page Title -->
+    <div class="page-title-area page-title-four">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="page-title-item">
+                    <h2>{{ __('home.latest_blog') }}</h2>
+                    <ul>
+                        <li>
+                            <a href="{{ url('/') }}">{{ __('home.home') }}</a>
+                        </li>
+                        <li>
+                            <i class="icofont-simple-right"></i>
+                        </li>
+                        <li>{{ __('home.blogs') }}</li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <!-- inner page banner END -->
-        <!-- contact area -->
-        <div class="content-area">
-            <div class="container max-w900">
-                <!-- Blog large img -->
+    </div>
+    <!-- End Page Title -->
+
+    <!-- Blog -->
+    <section class="blog-area-two pt-100">
+        <div class="container">
+            <div class="row">
                 @foreach($blogs as $blog)
-                <div class="blog-post blog-lg blog-rounded">
-                    @php
-                        $title = session('lang') . '_title';
-                        $author = session('lang') . '_author';
-                        $content = session('lang') . '_content';
-                    @endphp
-                    <div class="dlab-post-media dlab-img-effect zoom-slow">
-                        <a href="{{ url('blogs/' . $blog->id . '/' . $blog->$title) }}"><img src="{{ $blog->blog_image }}" alt=""></a>
-                    </div>
-                    <div class="dlab-info p-a25 border-1">
-                        <div class="dlab-post-meta">
-                            <ul>
-                                <li class="post-date">
-                                    <strong>{{ $blog->created_at->format('d M') }}</strong>
-                                    <span> {{ $blog->created_at->format('Y') }} </span>
-                                </li>
-                                <li class="post-author">
-                                    {{ __('home.by') }} <a href="{{ url('blogs/' . $blog->id . '/' . $blog->$title) }}"> {{ $blog->$author }} </a> </li>
-                            </ul>
-                        </div>
-                        <div class="dlab-post-title">
-                            <h4 class="post-title">
-                                <a href="{{ url('blogs/' . $blog->id . '/' . $blog->$title) }}"> {{ $blog->$title }} </a>
-                            </h4>
-                        </div>
-                        <div class="dlab-post-text">
-                            <p> {!! substr($blog->$content, 0, 30)  !!} ...</p>
-                        </div>
-                        <div class="dlab-post-readmore">
-                            <a href="{{ url('blogs/' . $blog->id . '/' . $blog->$title) }}" title="READ MORE" rel="bookmark" class="site-button">
-                                {{ __('home.read_more') }}
-                                <i class="ti-arrow-right"></i>
+                    <div class="col-sm-6 col-lg-4 wow fadeInUp" data-wow-delay=".5s">
+                    <div class="blog-item">
+                        @php
+                            $title = session('lang') . '_title';
+                            $content = session('lang') . '_content';
+                        @endphp
+                        <div class="blog-top">
+                            <a href="{{ route('blog.show', ['id' => $blog->id, 'title' => $blog->$title]) }}">
+                                <img src="{{ $blog->blog_image }}" alt="Blog">
                             </a>
+                        </div>
+                        <div class="blog-bottom">
+                            <h3>
+                                <a href="{{ route('blog.show', ['id' => $blog->id, 'title' => $blog->$title]) }}">World AIDS Day, designated on 1 December.</a>
+                            </h3>
+                            <p>{!! substr($blog->content, 0, 50) !!}</p>
+                            <ul>
+                                <li>
+                                    <a href="{{ route('blog.show', ['id' => $blog->id, 'title' => $blog->$title]) }}">
+                                        {{ __('home.read_more') }}
+                                        <i class="icofont-long-arrow-right"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <i class="icofont-calendar"></i>
+                                    {{ $blog->created_at->format('d M Y') }}
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
                 @endforeach
-                <!-- Blog large img END -->
-                <!-- Pagination start -->
-                <div class="pagination-bx clearfix text-center">
-                    <ul class="pagination">
-                        {{ $blogs->appends(request()->query())->links() }}
-                    </ul>
-                </div>
-                <!-- Pagination END -->
             </div>
         </div>
-    </div>
-    <!-- Content END-->
+    </section>
+    <!-- End Blog -->
+
 @endsection

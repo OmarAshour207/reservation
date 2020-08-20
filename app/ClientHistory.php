@@ -17,11 +17,14 @@ class ClientHistory extends Model
         'doctor_id'
     ];
 
+    // Attributes
+
     public function getHistoryImageAttribute()
     {
         return Storage::url('public/clients-histories/' . $this->image);
     }
 
+    // Relations
     public function user()
     {
         return $this->belongsTo('App\User', 'user_id');
@@ -31,4 +34,15 @@ class ClientHistory extends Model
     {
         return $this->belongsTo('App\Admin', 'doctor_id');
     }
+
+    // Scopes
+    public function ScopeWhenSearch($query, $search)
+    {
+        return $query->when($search, function($q) use ($search){
+            return $q->whereHas('user', function ($qu) use ($search){
+                $qu->where('name', 'like', "%$search%");
+            });
+        });
+    }
+
 }

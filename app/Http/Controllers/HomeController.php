@@ -37,10 +37,10 @@ class HomeController extends Controller
         $projects = Project::orderBy('id', 'desc')->limit(5)->get();
         $services = Service::orderBy('id', 'desc')->limit(8)->get();
         $teamMembers = TeamMember::orderBy('id', 'desc')->limit(3)->get();
-        $testimonials = Testimonial::orderBy('id', 'desc')->limit(3)->get();
+        $testimonials = Testimonial::orderBy('id', 'desc')->limit(4)->get();
         $blogs = Blog::orderBy('id', 'desc')->limit(3)->get();
         $themeName = getThemeName();
-        $sliders = $themeName == 'second' ? Slider::orderBy('id', 'desc')->limit(2)->get() : Slider::orderBy('id', 'desc')->limit(3)->get();
+        $sliders = Slider::orderBy('id', 'desc')->limit(3)->get();
 
         return view('site.' . $themeName . '.home',
             compact('page_filter', 'sliders',
@@ -61,7 +61,6 @@ class HomeController extends Controller
                 ->first();
 
         if($visitors != null) {
-//            $afterDay = date( 'Y:m:d H:i:s', (strtotime($created) + (24 * 60 * 60)));
             $created = Carbon::parse($visitors->created_at);
 
             if(!$created->isCurrentDay()) {
@@ -111,6 +110,7 @@ class HomeController extends Controller
 
     public function teamPage()
     {
+        $this->checkVisitor();
         $services = Service::orderBy('id', 'desc')->limit(8)->get();
         $teamMembers = TeamMember::whenSearch(\request()->search)->orderBy('id', 'desc')->limit(9)->get();
         return view('site.first.team', compact('services' , 'teamMembers'));

@@ -23,9 +23,9 @@
 
 
 
-                <form class="search-form d-none d-sm-flex flex" action="https://demo.frontted.com/flowdash/111/index.html">
+                <form class="search-form d-none d-sm-flex flex">
                     <button class="btn" type="submit"><i class="material-icons">search</i></button>
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control" placeholder=" {{ __('home.search_here') }} {{ __('home.using_name') }}" value="{{ request()->search }}" name="search">
                 </form>
 
 

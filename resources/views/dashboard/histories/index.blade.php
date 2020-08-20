@@ -37,11 +37,11 @@
                             <th style="width: 40px;"> {{ trans('admin.client_name') }} </th>
                             <th style="width: 40px;"> {{ trans('admin.ar_case') }} </th>
                             <th style="width: 40px;"> {{ trans('admin.en_case') }} </th>
-                            <th style="width: 120px;" > {{ trans('admin.ar_description') }} </th>
-                            <th style="width: 120px;" > {{ trans('admin.en_description') }} </th>
+                            <th style="width: 120px;"> {{ trans('admin.ar_description') }} </th>
+                            <th style="width: 120px;"> {{ trans('admin.en_description') }} </th>
                             <th style="width: 40px;"> {{ __('admin.responsible_doctor') }} </th>
-                            <th style="width: 120px;" >{{ trans('admin.image') }}</th>
-                            <th style="width: 30px;" > {{ trans('admin.action') }} </th>
+                            <th style="width: 120px;">{{ trans('admin.image') }}</th>
+                            <th style="width: 30px;"> {{ trans('admin.action') }} </th>
                         </tr>
                         </thead>
                         <tbody class="list" id="companies">
@@ -61,7 +61,9 @@
                             <td style="width: 40px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ $clients_history->user->name }}
+                                        <a href="{{ url('admin/client/doctors/' . $clients_history->user->id) }}">
+                                            {{ $clients_history->user->name }}
+                                        </a>
                                     </div>
                                 </div>
                             </td>

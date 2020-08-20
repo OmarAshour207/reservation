@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Admin;
+use App\ClientHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
@@ -39,9 +40,10 @@ class AccountController extends Controller
         return redirect()->route('accounts.index');
     }
 
-    public function show(Admin $admin)
+    public function show(Admin $account)
     {
-        return view('dashboard.accounts.edit', $admin);
+        $clients = ClientHistory::with('user')->where('doctor_id', $account->id)->paginate(20);
+        return view('dashboard.accounts.show', compact('clients', 'account'));
     }
 
     public function edit(Admin $account)

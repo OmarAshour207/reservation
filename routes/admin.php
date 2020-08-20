@@ -54,12 +54,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'] , function () {
         Route::resource('clients', 'ClientController');
 
         Route::resource('clients-histories', 'ClientHistoryController');
+        Route::get('client/doctors/{id}', 'ClientHistoryController@showDoctors');
 
         Route::resource('accounts', 'AccountController');
 
         Route::resource('reservations', 'ReservationController');
 
         Route::resource('appointments', 'AppointmentController');
+        Route::post('change/status', 'AppointmentController@changeStatus')->name('change.status');
 
     });
 });

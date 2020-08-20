@@ -145,6 +145,9 @@ return [
     'rejected'              => 'Rejected',
     'approved'              => 'Approved',
     'pending'               => 'Pending',
+    'approve'               => 'Approve',
+    'reject'                => 'Reject',
+    'change_status'         => 'Change Status',
 
 
 

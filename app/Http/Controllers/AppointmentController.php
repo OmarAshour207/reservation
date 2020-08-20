@@ -6,7 +6,10 @@ use App\Admin;
 use App\Appointment;
 use App\Reservation;
 use App\Service;
+use App\Visitor;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AppointmentController extends Controller
 {
@@ -25,6 +28,7 @@ class AppointmentController extends Controller
 
     public function showPage()
     {
+        $this->checkVisitor();
         $services = Service::orderBy('id', 'desc')->limit('6')->get();
         $doctors = Admin::where('role', '!=', '0')->get();
         return view('site.first.appointment',
@@ -46,7 +50,14 @@ class AppointmentController extends Controller
                     ->where('day', $request->day)
                     ->orderBy('start_time')
                     ->get();
-            $slots = $this->makeTimes($times);
+
+            $all_slots = $this->makeTimes($times);
+            $reserved_slots = Appointment::where('doctor_id', $request->doctor_id)->whereIn('appointment', $all_slots)->get()->toArray();
+            $removed_slots = [];
+            for ($i = 0; $i < count($reserved_slots); $i++) {
+                array_push($removed_slots, $reserved_slots[$i]['appointment']);
+            }
+            $slots = array_diff($all_slots, $removed_slots);
             return view('site.first.ajax.times', compact('slots'));
         }
     }
@@ -65,5 +76,36 @@ class AppointmentController extends Controller
         }
         return $data;
     }
+
+    public function checkVisitor()
+    {
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $page = \Request::segment(1) ?? 'home';
+
+        $visitors = DB::table('visitors')
+                ->where('ip', $ip)
+                ->where('page', $page)
+                ->latest()
+                ->first();
+
+        if($visitors != null) {
+            $created = Carbon::parse($visitors->created_at);
+
+            if(!$created->isCurrentDay()) {
+                $this->createVisitor($ip, $page);
+            }
+        }else {
+            $this->createVisitor($ip, $page);
+        }
+    }
+
+    protected function createVisitor($ip, $page)
+    {
+        Visitor::create([
+            'ip'    => $ip,
+            'page'  => $page
+        ]);
+    }
+
 
 }

@@ -101,5 +101,7 @@ return [
     'rejected'              => 'Rejected',
     'approved'              => 'Approved',
     'pending'               => 'Pending',
+    'ambulance'             => 'Ambulance',
+    'using_name'            => 'Using Name'
 
 ];

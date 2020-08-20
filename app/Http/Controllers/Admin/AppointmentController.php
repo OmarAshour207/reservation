@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Admin;
 use App\Appointment;
 use App\Http\Controllers\Controller;
+use App\Reservation;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class AppointmentController extends Controller
 {
@@ -38,8 +40,19 @@ class AppointmentController extends Controller
         return redirect()->route('appointments.index');
     }
 
-    public function edit(Appointment $appointment)
+    public function changeStatus(Request $request)
     {
-        return view('dashboard.appointments.edit', compact('appointment'));
+        $appointment = Appointment::findOrFail($request->id);
+        $appointment->update([
+            'status'    => $request->status
+        ]);
     }
+
+    public function destroy(Appointment $appointment)
+    {
+        $appointment->delete();
+        session()->flash('success', __('home.deleted_successfully'));
+        return redirect()->route('appointments.index');
+    }
+
 }

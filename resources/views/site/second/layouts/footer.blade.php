@@ -1,59 +1,123 @@
 <!-- Footer -->
-<footer class="site-footer footer-gray-1">
-    <div class="footer-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-12 wow fadeIn" data-wow-delay="0.2s">
-                    <div class="widget border-0">
-                        <h6 class="m-b20 text-white font-weight-300 text-uppercase"> {{ __('home.useful_links') }} </h6>
-                        <ul class="list-2">
-                            <li><a href="{{ url('about') }}">{{ trans('home.about_us') }}</a></li>
-                            <li><a href="{{ url('services') }}">{{ trans('home.our_services') }}</a></li>
-                            <li><a href="{{ url('projects') }}">{{ trans('home.our_projects') }}</a></li>
-                            <li><a href="{{ url('contact-us') }}">{{ trans('home.contact_us') }}</a></li>
-                            <li><a href="{{ url('blogs') }}">{{ trans('home.blogs') }}</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 wow fadeIn" data-wow-delay="0.4s">
-                    <div class="widget">
-                        <h6 class="text-white font-weight-300 text-uppercase">{{ __('home.newsletter') }}</h6>
-                        <div class="subscribe-form m-b20 m-t15">
-                            <form class="dzSubscribe" action="https://industry.dexignzone.com/xhtml/script/mailchamp.php" method="post">
-                                <div class="dzSubscribeMsg"></div>
-                                <div class="input-group">
-                                    <input name="dzEmail" required="required" class="form-control radius-no" placeholder="{{ __('home.email_contact') }}" type="email">
-                                    <span class="input-group-btn">
-											<button name="submit" value="Submit" type="submit" class="site-button radius-no btnhover14">{{ __('home.send') }}</button>
-										</span>
-                                </div>
-                            </form>
+<footer class="pb-70">
+
+    @if (request()->segment(1) != 'login' && request()->segment(1) != 'register')
+        <!-- Newsletter -->
+        <div class="newsletter-area">
+            <div class="container">
+                <div class="row newsletter-wrap align-items-center">
+                    <div class="col-lg-6">
+                        <div class="newsletter-item">
+                            <h2> {{ __('home.join_newsletter') }} </h2>
                         </div>
-                        <h6 class="m-b10 text-white font-weight-300 text-uppercase">{{ __('home.connect_with_us') }}</h6>
-                        <ul class="list-inline m-a0">
-                            @php
-                                $socialSites = ['facebook', 'twitter', 'instagram'];
-                            @endphp
-                            @for($i = 0; $i < count($socialSites); $i++)
-                                @if(setting($socialSites[$i]) != '')
-                                    <li>
-                                        <a class="site-button {{ $socialSites[$i] }} sharp" href="{{ setting($socialSites[$i]) }}">
-                                            <i class="fa fa-{{ $socialSites[$i] }}"></i>
-                                        </a>
-                                    </li>
-                                @endif
-                            @endfor
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="newsletter-item">
+                            <div class="newsletter-form">
+                                <form class="newsletter-form" data-toggle="validator">
+                                    <input type="email" class="form-control" placeholder="{{ __('home.email_contact') }}" name="email" required autocomplete="off">
+
+                                    <button class="btn newsletter-btn" type="submit">
+                                        {{ __('home.subscribe') }}
+                                    </button>
+
+                                    <div id="validator-newsletter" class="form-result"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Newsletter -->
+    @endif
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-lg-4">
+                <div class="footer-item">
+                    <div class="footer-contact">
+                        <h3>Contact Us</h3>
+                        <ul>
+                            <li>
+                                <i class="icofont-ui-message"></i>
+                                <a href="mailto:{{ setting('email') }}">{{ setting('email') }}</a>
+                            </li>
+                            <li>
+                                <i class="icofont-stock-mobile"></i>
+                                <a href="tel:+236256256365">{{ __('home.call') }}: {{ setting('phone') }}</a>
+                            </li>
+                            <li>
+                                <i class="icofont-location-pin"></i>
+                                {{ setting(session('lang') . '_address') }}
+                            </li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-5 col-md-12 col-sm-12 wow fadeIn" data-wow-delay="0.6s">
-                    <div class="icon-bx-wraper bx-style-1 p-a30 m-b15 radius-sm br-col-w1 bg-tpw1">
-                        <h5 class="text-white font-weight-300">{{ __('home.about_us') }}</h5>
-                        <p> {{ __('home.about_us_description') }} </p>
+            </div>
+            <div class="col-sm-6 col-lg-2">
+                <div class="footer-item">
+                    <div class="footer-quick">
+                        <h3> {{ __('home.useful_links') }} </h3>
+                        <ul>
+                            <li>
+                                <a href="{{ url('about') }}"> {{ __('home.about_us') }} </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('blog') }}">{{ __('admin.blogs') }}</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('contact-us') }}">{{ __('home.contact_us') }}</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('projects') }}"> {{ __('home.our_projects') }} </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('services') }}">{{ __('home.our_services') }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="footer-item">
+                    <div class="footer-quick">
+                        <h3> {{ __('home.our_services') }} </h3>
+                        <ul>
+                            @foreach($services as $service)
+                            <li>
+                                @php
+                                    $title = session('lang')  . '_title';
+                                @endphp
+                                <a href="{{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }}"> {{ $service->$title }} </a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="footer-item">
+                    <div class="footer-feedback">
+                        <h3>{{ __('home.feedback') }}</h3>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="{{ __('home.full_name') }}">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="{{ __('home.phone') }}">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" id="your_message" rows="5" placeholder="{{ __('home.message') }}"></textarea>
+                            </div>
+                            <div class="text-left">
+                                <button type="submit" class="btn feedback-btn">{{ __('home.send') }}</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </footer>
-<!-- Footer END-->
+<!-- End Footer -->

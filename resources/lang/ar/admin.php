@@ -146,5 +146,8 @@ return [
     'rejected'              => 'مرفوض',
     'approved'              => 'مقبول',
     'pending'               => 'تحت الأنتظار',
+    'approve'               => 'قبول',
+    'reject'                => 'رفض',
+    'change_status'         => 'تغيير الحاله',
 
 ];
