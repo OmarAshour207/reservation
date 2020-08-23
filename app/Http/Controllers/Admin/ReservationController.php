@@ -29,7 +29,8 @@ class ReservationController extends Controller
             'day'               => 'required|date',
             'start_time'        => 'required|date_format:H:i',
             'end_time'          => 'required|date_format:H:i|after:start_time',
-            'waiting_time'      => 'required|numeric'
+            'waiting_time'      => 'required|numeric',
+            'price'             => 'required|numeric'
         ]);
         Reservation::create($data);
         session()->flash('success', __('admin.added_successfully'));
@@ -50,7 +51,8 @@ class ReservationController extends Controller
             'day'               => 'required|date',
             'start_time'        => 'required',
             'end_time'          => 'required|after:start_time',
-            'waiting_time'      => 'required|numeric'
+            'waiting_time'      => 'required|numeric',
+            'price'             => 'required|numeric'
         ]);
         $reservation->update($data);
         session()->flash('success', __('admin.updated_successfully'));

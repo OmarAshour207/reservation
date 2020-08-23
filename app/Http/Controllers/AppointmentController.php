@@ -18,7 +18,8 @@ class AppointmentController extends Controller
         $data = $request->validate([
             'doctor_id'     => 'required|numeric',
             'day'           => 'required|date',
-            'appointment'   => 'required|date_format:H:i:s'
+            'appointment'   => 'required|date_format:H:i:s',
+            'price'         => 'required|numeric'
         ]);
         $data['user_id'] = auth()->user()->id;
         Appointment::create($data);
@@ -31,15 +32,28 @@ class AppointmentController extends Controller
         $this->checkVisitor();
         $services = Service::orderBy('id', 'desc')->limit('6')->get();
         $doctors = Admin::where('role', '!=', '0')->get();
-        return view('site.first.appointment',
+
+        return view('site.first.doctors',
             ['services' => $services, 'doctors' => $doctors]);
+    }
+
+    public function showAppointments($id)
+    {
+        $services = Service::orderBy('id', 'desc')->limit('6')->get();
+        $doctor = Admin::findOrFail($id);
+        $reservations = Reservation::where('doctor_id', $doctor->id)
+                ->where('created_at', '>', Carbon::yesterday())
+                ->get();
+        return view('site.first.appointment', compact('doctor', 'reservations', 'services'));
     }
 
     public function showDays(Request $request)
     {
         if ($request->ajax()) {
-            $days = Reservation::select('day', 'doctor_id')->where('doctor_id', $request->doctor_id)->get();
-            return view('site.first.ajax.days', compact('days'));
+            $reservations = Reservation::where('created_at', '>', Carbon::yesterday())
+                    ->where('doctor_id', $request->doctor_id)
+                    ->get();
+            return view('site.first.ajax.days', compact('reservations'));
         }
     }
 

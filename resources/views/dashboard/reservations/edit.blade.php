@@ -56,6 +56,11 @@
                         <input id="waiting_time" name="waiting_time" type="number" class="form-control" placeholder="{{ __('admin.waiting_time') }}" value="{{ $reservation->waiting_time }}">
                     </div>
 
+                    <div class="form-group">
+                        <label for="price"> {{ trans('admin.reservations') }} / {{ trans('admin.price') }}</label>
+                        <input id="price" name="price" type="number" class="form-control" placeholder="{{ __('admin.price') }}" value="{{ $reservation->price }}">
+                    </div>
+
                     <div class="text-right mb-5">
                         <input type="submit" name="add" class="btn btn-success" value="{{ trans('admin.update') }}">
                     </div>

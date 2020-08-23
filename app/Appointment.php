@@ -11,7 +11,8 @@ class Appointment extends Model
         'user_id',
         'day',
         'appointment',
-        'status'
+        'status',
+        'price'
     ];
 
     public function doctor()

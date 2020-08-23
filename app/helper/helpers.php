@@ -22,6 +22,21 @@ function setActive($segment)
     }
 }
 
+function setCurrentHome($segment)
+{
+    if (Request::segment(1) == '') {
+        return 'current';
+    }
+}
+
+function setCurrent($segment)
+{
+    if($segment == Request::segment(1)) {
+        return 'current';
+    }
+}
+
+
 function getColor()
 {
     $settings = \App\WebsiteSetting::first();

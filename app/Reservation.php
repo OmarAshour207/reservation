@@ -12,6 +12,7 @@ class Reservation extends Model
         'start_time',
         'end_time',
         'waiting_time',
+        'price',
         'creator'
     ];
 

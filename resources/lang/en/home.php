@@ -102,6 +102,12 @@ return [
     'approved'              => 'Approved',
     'pending'               => 'Pending',
     'ambulance'             => 'Ambulance',
-    'using_name'            => 'Using Name'
+    'using_name'            => 'Using Name',
+    'confirm_booking'       => 'Confirm Booking',
+    'close'                 => 'Close',
+    'to'                    => 'To',
+    'price'                 => 'Price',
+    'doctor_and nursery'    => 'Doctors  & Nurse',
+    'year_experience'       => 'Year Experience',
 
 ];

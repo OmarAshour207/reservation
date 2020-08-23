@@ -148,6 +148,10 @@ return [
     'approve'               => 'Approve',
     'reject'                => 'Reject',
     'change_status'         => 'Change Status',
+    'price'                 => 'Price',
+    'money'                 => 'Money',
+    'total_money'           => 'Total Money In Month',
+    'le'                    => '-LE',
 
 
 

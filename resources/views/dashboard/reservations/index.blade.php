@@ -39,6 +39,7 @@
                             <th style="width: 40px;"> {{ trans('admin.start_time') }} </th>
                             <th style="width: 40px;"> {{ trans('admin.end_time') }} </th>
                             <th style="width: 40px;"> {{ trans('admin.waiting_time') }} </th>
+                            <th style="width: 40px;"> {{ trans('admin.price') }} </th>
                             <th style="width: 40px;"> {{ trans('admin.creator') }} </th>
                             <th style="width: 30px;" > {{ trans('admin.action') }} </th>
                         </tr>
@@ -91,6 +92,14 @@
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
                                         {{ $reservation->waiting_time }}
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td style="width: 40px">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        {{ $reservation->price }}
                                     </div>
                                 </div>
                             </td>

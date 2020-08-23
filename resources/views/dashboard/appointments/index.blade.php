@@ -11,7 +11,7 @@
                             <li class="breadcrumb-item active" aria-current="page">{{ trans('admin.appointments') }}</li>
                         </ol>
                     </nav>
-                    <h1 class="m-0"> {{ trans('admin.appointments') }} </h1>
+                    <h1 class="m-0"> {{ trans('admin.total_money') . ' - ' . $total_money_in_month . __('admin.le') }} </h1>
                 </div>
                 <a href="{{ route('appointments.create') }}" class="btn btn-success ml-3">{{ trans('admin.create') }} <i class="material-icons">add</i></a>
             </div>
@@ -38,6 +38,7 @@
                             <th style="width: 40px;"> {{ trans('admin.doctor_name') }} </th>
                             <th style="width: 40px;"> {{ trans('admin.day') }} </th>
                             <th style="width: 40px;"> {{ trans('admin.time') }} </th>
+                            <th style="width: 40px;"> {{ trans('admin.price') }} </th>
                             <th style="width: 40px;"> {{ trans('admin.status') }} </th>
                             <th style="width: 40px;"> {{ trans('admin.change_status') }} </th>
                             <th style="width: 30px;" > {{ trans('admin.action') }} </th>
@@ -84,7 +85,15 @@
                             <td style="width: 40px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ date('g:i A', strtotime($appointment->time)) }}
+                                        {{ date('g:i A', strtotime($appointment->appointment)) }}
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td style="width: 40px;">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        {{ $appointment->price }}
                                     </div>
                                 </div>
                             </td>

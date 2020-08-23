@@ -9,7 +9,7 @@
             if(doctor_id > 0) {
                 $.ajax({
                     url: '{{ url("appointments/days") }}',
-                    method: 'get',
+                    method: 'post',
                     data_type: 'html',
                     data: {
                         _token: '{{ csrf_token() }}',
@@ -26,9 +26,11 @@
         $(document).on('change', '.days', function(){
             var doctor_id = $('.doctor_id option:selected').val();
             var day = $('.days option:selected').val();
+            var price = $('.days option:selected').data('price');
+            console.log($('.days option:selected').data('price'));
             $.ajax({
                 url: '{{ url("appointments/times") }}',
-                method: 'get',
+                method: 'post',
                 data_type: 'html',
                 data: {
                     _token: '{{ csrf_token() }}',
@@ -36,6 +38,7 @@
                     day: day
                 }, success: function(data) {
                     $('.times').html(data);
+                    $('.price').val(price);
                 }
             });
         });
@@ -98,6 +101,8 @@
                         <select id="time" name="appointment" data-toggle="select" class="form-control select2 times">
                         </select>
                     </div>
+
+                    <input type="hidden" name="price" value="" class="price">
 
                     <div class="form-group">
                         <label for="status"> {{ trans('admin.clients_appointments') }} / {{ trans('admin.choose_status') }}</label> <br>

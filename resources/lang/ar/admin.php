@@ -127,7 +127,7 @@ return [
     'client_name'           => 'أسم العميل',
     'responsible_doctor'    => 'الدكتور المسئول',
     'choose_client'         => 'أختر العميل',
-    'accounts'              => 'الحسابات',
+    'accounts'              => 'ايميلات الفريق',
     'reservations'          => 'مواعيد العياده',
     'day'                   => 'اليوم',
     'start_time'            => 'وقت البدايه',
@@ -149,5 +149,7 @@ return [
     'approve'               => 'قبول',
     'reject'                => 'رفض',
     'change_status'         => 'تغيير الحاله',
+    'money'                 => 'الأموال',
+    'total_money'           => 'اجمالي الأموال',
 
 ];

@@ -95,12 +95,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('blogs') }}" class="nav-link">
+                            <a href="{{ url('blogs') }}" class="nav-link {{ setActive('blogs') }}">
                                 <i class="icofont-book"></i>{{ __('home.blogs') }}
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('contact-us') }}" class="nav-link">
+                            <a href="{{ url('contact-us') }}" class="nav-link {{ setActive('contact-us') }}">
                                 <i class="icofont-phone"></i> {{ __('home.contact_us') }}
                             </a>
                         </li>
@@ -137,7 +137,7 @@
                             </li>
                         @else
                             <li class="nav-item">
-                                <a href="{{ url('login') }}" class="nav-link"> <i class="icofont-login"></i> {{ __('home.login') }}</a>
+                                <a href="{{ url('login') }}" class="nav-link"> <i class="icofont-login"></i></a>
                             </li>
                         @endif
                     </ul>

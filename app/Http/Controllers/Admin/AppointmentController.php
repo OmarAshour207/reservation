@@ -7,6 +7,7 @@ use App\Appointment;
 use App\Http\Controllers\Controller;
 use App\Reservation;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
@@ -15,7 +16,8 @@ class AppointmentController extends Controller
     public function index()
     {
         $appointments = Appointment::with('doctor', 'user')->orderBy('created_at', 'desc')->paginate(20);
-        return view('dashboard.appointments.index', compact('appointments'));
+        $total_money_in_month =  Appointment::select('price')->where('created_at', '>', Carbon::now()->subDays(30))->sum('price');
+        return view('dashboard.appointments.index', compact('appointments', 'total_money_in_month'));
     }
 
     public function create()
@@ -33,7 +35,8 @@ class AppointmentController extends Controller
             'doctor_id'     => 'required|numeric',
             'day'           => 'required|date',
             'appointment'   => 'required|date_format:H:i:s',
-            'user_id'       => 'required|numeric'
+            'user_id'       => 'required|numeric',
+            'price'         => 'required|numeric'
         ]);
         Appointment::create($data);
         session()->flash('success', __('home.booked_successfully'));

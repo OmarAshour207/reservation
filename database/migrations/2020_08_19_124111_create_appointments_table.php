@@ -22,6 +22,7 @@ class CreateAppointmentsTable extends Migration
             $table->date('day');
             $table->time('appointment');
             $table->tinyInteger('status')->default(2); // 0 => rejected, 1 => approved, 2 => pending
+            $table->integer('price');
             $table->timestamps();
         });
     }

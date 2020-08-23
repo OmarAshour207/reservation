@@ -1,4 +1,6 @@
 <option> {{ __('home.choose_day') }} </option>
-@foreach ($days as $day)
-    <option value="{{ $day->day }}" {{ $day->day == $choosen_day ? 'selected' : '' }}> {{ $day->day }} </option>
+@foreach ($reservations as $reservation)
+    <option value="{{ $reservation->day }}" {{ $reservation->day == $choosen_day ? 'selected' : '' }} data-price="{{ $reservation->price }}">
+        {{ $reservation->day }}
+    </option>
 @endforeach
