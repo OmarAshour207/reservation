@@ -97,6 +97,19 @@ return [
     'approved'              => 'مقبول',
     'pending'               => 'تحت الانتظار',
     'ambulance'             => 'عربه الأسعاف',
-    'using_name'            => 'الأسم المستخدم'
+    'using_name'            => 'الأسم المستخدم',
+    'confirm_booking'       => 'تأكيد الحجز',
+    'close'                 => 'الغاء',
+    'to'                    => 'الي',
+    'price'                 => 'السعر',
+    'doctor_and nursery'    => 'دكتور وممرضه',
+    'year_experience'       => 'سنه خبره',
+    'need_doctor'           => 'هل تحتاج طبيب للفحص ؟',
+    'just_make_appointment' => 'فقط تستطيع عمل حجز',
+    'to_receive_newsletter' => 'لكي تستقبل اخر الاخبار فضلا اترك ايميلك للتواصل ',
+    'subscribe_newsletter'  => 'الأشتراك في أخر الأخبار',
+    'subscribe'             => 'أشتراك',
+    'article'               => 'مقال',
+    'have_question'         => 'هل لديك ايه اسئله',
 
 ];

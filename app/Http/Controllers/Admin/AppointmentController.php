@@ -16,8 +16,7 @@ class AppointmentController extends Controller
     public function index()
     {
         $appointments = Appointment::with('doctor', 'user')->orderBy('created_at', 'desc')->paginate(20);
-        $total_money_in_month =  Appointment::select('price')->where('created_at', '>', Carbon::now()->subDays(30))->sum('price');
-        return view('dashboard.appointments.index', compact('appointments', 'total_money_in_month'));
+        return view('dashboard.appointments.index', compact('appointments'));
     }
 
     public function create()

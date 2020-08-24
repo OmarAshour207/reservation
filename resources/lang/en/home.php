@@ -109,5 +109,13 @@ return [
     'price'                 => 'Price',
     'doctor_and nursery'    => 'Doctors  & Nurse',
     'year_experience'       => 'Year Experience',
+    'need_doctor'           => 'Need a Doctor for Check-up?',
+    'just_make_appointment' => 'JUST MAKE AN APPOINTMENT',
+    'to_receive_newsletter' => 'To receive email releases, simply provide us with your email address below.',
+    'subscribe_newsletter'  => 'Subscribe Our Newsletter',
+    'subscribe'             => 'Subscribe',
+    'article'               => 'Article',
+    'have_question'         => 'Do you have a Question?',
+
 
 ];

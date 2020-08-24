@@ -49,9 +49,6 @@
 	<!-- End Main Slider -->
 
 
-    @if($page_filter != null)
-
-    @if (in_array('about', $page_filter))
         <!-- Fluid Section One -->
         <section class="fluid-section-one">
             <div class="outer-section clearfix">
@@ -99,10 +96,8 @@
             </div>
 
         </section>
-    @endif
 
 
-    @if (in_array('services', $page_filter))
         <!-- Services Section -->
         <section class="services-section">
             <div class="auto-container">
@@ -127,7 +122,7 @@
                                             <span class="icon flaticon-operating-room"></span>
                                         </div>
                                         <h3>
-                                            <a href="#">
+                                            <a href=" {{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }} ">
                                                 {{ $service->$title }}
                                             </a>
                                         </h3>
@@ -196,7 +191,6 @@
             </div>
 
         </section>
-    @endif
 
         <!-- Counter Section -->
         <section class="counter-section" style="background-image: url({{ asset('site/part2/images/background/pattern-3.png') }})">
@@ -246,7 +240,6 @@
         </section>
         <!-- End Counter Section -->
 
-    @if (in_array('team_members', $page_filter))
         <!-- Team Section -->
         <section class="team-section">
             <div class="auto-container">
@@ -293,7 +286,6 @@
 
         </section>
         <!-- End Team Section -->
-    @endif
 
         <!-- FullWidth Section -->
         <section class="fullwidth-section">
@@ -336,13 +328,12 @@
         </section>
         <!-- End FullWidth Section -->
 
-    @if (in_array('testimonials', $page_filter))
         <!-- Testimonial Section -->
         <section class="testimonial-section">
             <div class="auto-container">
                 <!-- Sec Title -->
                 <div class="sec-title centered">
-                    <h2>{{ __('home.happy_customers_said') }}</h2>
+                    <h2>What Patients Saying</h2>
                     <div class="separator"></div>
                 </div>
                 <div class="testimonial-outer" style="background-image: url({{ asset('site/part2/images/background/pattern-4.png') }})">
@@ -402,9 +393,7 @@
 
         </section>
         <!-- End Testimonial Section Two -->
-    @endif
 
-    @if (in_array('latest_blog', $page_filter))
         <!-- News Section -->
         <section class="news-section">
             <div class="auto-container">
@@ -459,7 +448,6 @@
 
         </section>
         <!-- End News Section -->
-    @endif
 
         <!-- Newsletter Section -->
         <section class="newsletter-section">
@@ -498,5 +486,4 @@
 
         </section>
         <!-- End Newsletter Section -->
-    @endif
 @endsection

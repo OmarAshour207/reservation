@@ -31,9 +31,10 @@ class AppointmentController extends Controller
     {
         $this->checkVisitor();
         $services = Service::orderBy('id', 'desc')->limit('6')->get();
-        $doctors = Admin::where('role', '!=', '0')->get();
+        $doctors = Admin::where('role', '!=', '0')->paginate(8);
+        $name = getThemeName();
 
-        return view('site.first.doctors',
+        return view('site.'. $name .'.doctors',
             ['services' => $services, 'doctors' => $doctors]);
     }
 
@@ -44,7 +45,8 @@ class AppointmentController extends Controller
         $reservations = Reservation::where('doctor_id', $doctor->id)
                 ->where('created_at', '>', Carbon::yesterday())
                 ->get();
-        return view('site.first.appointment', compact('doctor', 'reservations', 'services'));
+        $name = getThemeName();
+        return view('site.'. $name .'.appointment', compact('doctor', 'reservations', 'services'));
     }
 
     public function showDays(Request $request)

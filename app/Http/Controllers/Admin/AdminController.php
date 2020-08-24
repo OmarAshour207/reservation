@@ -15,6 +15,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Analytics;
 use App\Appointment;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Spatie\Analytics\Period;
 
@@ -22,6 +23,8 @@ class AdminController extends Controller
 {
     public function showDashboard()
     {
+
+
         session('lang') ?? session()->put('lang', app()->getLocale());
         $services_count = Service::all()->count();
         $projects_count = Project::all()->count();
@@ -44,6 +47,9 @@ class AdminController extends Controller
 
         $visited_pages_in_month = $this->getCountsPagesForStats(30);
 
+        $status_percantage = $this->getStatusPercantage($appointment_count);
+        $status_in_time = $this->getAppointmentsStatusCount();
+
         return view('dashboard.home', compact(
             'services_count', 'projects_count',
                     'contacts_count', 'testimonials_count',
@@ -51,7 +57,8 @@ class AdminController extends Controller
                     'visible_sections', 'hidden_sections',
                     'appointment_count', 'visitors_count',
                     'most_visited', 'most_visited_page',
-                    'pages_in_percentage', 'visited_pages_in_month'
+                    'pages_in_percentage', 'visited_pages_in_month',
+                    'status_percantage', 'status_in_time'
         ));
     }
 
@@ -147,6 +154,35 @@ class AdminController extends Controller
         }
         $data = [$most_visited, $most_visited_page];
         return $data;
+    }
+
+    public function getAppointmentsStatusCount()
+    {
+        $appointments = Appointment::whenSearch(request())->select('status')->get();
+        $status = [
+            0       => 0,
+            1       => 0,
+            2       => 0
+        ];
+
+        foreach($appointments as $appointment) {
+            foreach ($status as $index => $s) {
+                if($appointment->status == $index) {
+                    $status[$index] += 1;
+                }
+            }
+        }
+        return $status;
+    }
+
+    public function getStatusPercantage($appointments_count)
+    {
+        $status = $this->getAppointmentsStatusCount();
+
+        foreach ($status as $index => $page) {
+            $status[$index] = round(($page / $appointments_count) * 100);
+        }
+        return $status;
     }
 
 }

@@ -13,7 +13,7 @@ class ImageController extends Controller
     {
         $imageName = Image::make($request->image)
             ->resize($request->width, $request->height)
-            ->encode('jpg', 50);
+            ->encode('jpg');
         Storage::disk('local')->put('public/' . $request->path .'/'. $request->image->hashName(), (string) $imageName, 'public');
         return $request->image->hashName();
     }

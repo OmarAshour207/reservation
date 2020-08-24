@@ -123,6 +123,72 @@
 
                 </div>
             </div>
+
+            <div class="row">
+
+                <div class="col-lg-8">
+                    <form>
+                        <div class="row mb-2">
+                            <input class="form-control col-lg-4 mr-2" type="date" name="from" placeholder="{{__('home.from') }}" value="{{ request('from') }}">
+                            <input class="form-control col-lg-4 mr-2" type="date" name="to" placeholder="{{__('home.to') }}" value="{{ request('to') }}">
+                            <button type="submit" class="btn btn-success col-lg-2"> {{ __('admin.search') }} </button>
+                        </div>
+                    </form>
+                    <div class="card">
+                        <div class="card-header bg-white d-flex align-items-center">
+                            <h4 class="card-header__title flex m-0">{{ __('admin.appointments_status') }}</h4>
+                            <div data-toggle="flatpickr" data-flatpickr-wrap="true" data-flatpickr-static="true" data-flatpickr-mode="range" data-flatpickr-alt-format="d/m/Y" data-flatpickr-date-format="d/m/Y">
+                                <a href="javascript:void(0)" class="link-date" data-toggle>
+                                    <span class="text-muted mx-1">{{ __('admin.from') }}</span>
+                                    {{  \request()->from == '' ? Carbon\Carbon::now()->subMonth()->format('Y/M/d') : request('from')  }}
+                                    <span class="text-muted mx-1">{{ __('admin.to') }}</span>
+                                    {{ \request()->to == '' ? date('Y/M/d') : request('to')  }}
+                                </a>
+                                <input class="flatpickr-hidden-input" type="text" value="13/03/2018 to 20/03/2018" data-input>
+                            </div>
+                        </div>
+                        <div class="card-body text-muted">
+                            <div class="chart" style="height: calc(248px);">
+                                <canvas id="earningClientsChart">
+                                    <span style="font-size: 1rem;"><strong>Website Traffic / Clients</strong> area chart goes here.</span>
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+
+                    <div class="card">
+                        <div class="card-header bg-white">
+                            <h4 class="card-header__title m-0"> {{ __('admin.appointments_status') }} </h4>
+                        </div>
+                        <div class="card-body py-4">
+                            @foreach($status_percantage as $index => $status)
+                            <div class="d-flex justify-content-between pb-1">
+                                <span>
+                                    @if ($index == 0)
+                                        {{ __('admin.rejected') }}
+                                    @elseif ($index == 1)
+                                        {{ __('admin.approved') }}
+                                    @else
+                                        {{ __('admin.pending') }}
+                                    @endif
+                                </span>
+                                <div>
+                                    <strong> {{ round(($status/100) * $appointment_count) }} </strong>
+                                    <span class="text-muted">/ {{ $appointment_count }}</span>
+                                </div>
+                            </div>
+                            <div class="progress mb-3" style="height: 8px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: {{ $status }}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
         <!-- // END drawer-layout__content -->
     </div>
@@ -167,6 +233,41 @@
                         ticks: {
                             min: 0,
                             max: '{{ $visitors_count }}',
+                        }
+                    }]
+                }
+            }
+        });
+
+        var ctx = document.getElementById('earningClientsChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [ '{{ __('admin.rejected') }}', '{{ __('admin.approved') }}', '{{ __('admin.pending') }}' ],
+                datasets: [{
+                    label: '{{ __('admin.pages_visitors') }}',
+                    data: [ {{ $status_in_time[0] }}, {{ $status_in_time[1] }}, {{ $status_in_time[2] }}
+                        ],
+                    backgroundColor: [
+                        'rgba(255, 99, 132)',
+                        'rgba(125, 198, 104)',
+                        'rgba(255, 206, 86)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 0.1)',
+                        'rgba(125, 198, 104, 0.1)',
+                        'rgba(255, 206, 86, 0.1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+
+                    yAxes: [{
+                        ticks: {
+                            min: 0,
+                            max: '{{ $appointment_count }}',
                         }
                     }]
                 }

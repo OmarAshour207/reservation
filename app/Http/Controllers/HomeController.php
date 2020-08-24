@@ -36,7 +36,7 @@ class HomeController extends Controller
         $contactUs = Contactus::first();
         $projects = Project::orderBy('id', 'desc')->limit(5)->get();
         $services = Service::orderBy('id', 'desc')->limit(8)->get();
-        $teamMembers = TeamMember::orderBy('id', 'desc')->limit(3)->get();
+        $teamMembers = TeamMember::orderBy('id', 'desc')->limit(4)->get();
         $testimonials = Testimonial::orderBy('id', 'desc')->limit(4)->get();
         $blogs = Blog::orderBy('id', 'desc')->limit(3)->get();
         $themeName = getThemeName();
@@ -113,7 +113,8 @@ class HomeController extends Controller
         $this->checkVisitor();
         $services = Service::orderBy('id', 'desc')->limit(8)->get();
         $teamMembers = TeamMember::whenSearch(\request()->search)->orderBy('id', 'desc')->limit(9)->get();
-        return view('site.first.team', compact('services' , 'teamMembers'));
+        $name = getThemeName();
+        return view('site.' . $name . '.team', compact('services' , 'teamMembers'));
     }
 
     public function servicesPage()

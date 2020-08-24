@@ -152,6 +152,9 @@ return [
     'money'                 => 'Money',
     'total_money'           => 'Total Money In Month',
     'le'                    => '-LE',
+    'total_appointments'    => 'Total Appointments',
+    'appointments_status'   => 'Appointments Status',
+    'search'                => 'Search'
 
 
 

@@ -25,4 +25,11 @@ class Appointment extends Model
         return $this->belongsTo('App\User', 'user_id');
     }
 
+    public function scopeWhenSearch($query, $search)
+    {
+        return $query->when($search->from, function($q) use ($search) {
+            return $q->whereBetween('created_at', [$search->from, $search->to]);
+        });
+    }
+
 }

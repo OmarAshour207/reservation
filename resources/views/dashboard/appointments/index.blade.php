@@ -11,7 +11,7 @@
                             <li class="breadcrumb-item active" aria-current="page">{{ trans('admin.appointments') }}</li>
                         </ol>
                     </nav>
-                    <h1 class="m-0"> {{ trans('admin.total_money') . ' - ' . $total_money_in_month . __('admin.le') }} </h1>
+                    <h1 class="m-0"> {{ __('admin.clients_appointments') }} </h1>
                 </div>
                 <a href="{{ route('appointments.create') }}" class="btn btn-success ml-3">{{ trans('admin.create') }} <i class="material-icons">add</i></a>
             </div>

@@ -151,5 +151,9 @@ return [
     'change_status'         => 'تغيير الحاله',
     'money'                 => 'الأموال',
     'total_money'           => 'اجمالي الأموال',
+    'le'                    => '-جنيه',
+    'total_appointments'    => 'أجمالي المواعيد',
+    'appointments_status'   => 'حالات المواعيد',
+    'search'                => 'بحث'
 
 ];

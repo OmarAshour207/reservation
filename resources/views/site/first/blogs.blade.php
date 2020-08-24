@@ -61,6 +61,7 @@
                 @endforeach
             </div>
         </div>
+        {{ $blogs->appends(request()->query())->links() }}
     </section>
     <!-- End Blog -->
 

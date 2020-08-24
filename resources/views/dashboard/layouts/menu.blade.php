@@ -3,13 +3,13 @@
         <div class="sidebar sidebar-dark sidebar-left sidebar-p-t bg-dark" data-perfect-scrollbar>
             <div class="sidebar-heading">{{ __('admin.menu') }}</div>
             <ul class="sidebar-menu">
-                <li class="sidebar-menu-item">
-                    <a class="sidebar-menu-button" data-toggle="collapse" href="#dashboards_menu">
+                <li class="sidebar-menu-item open">
+                    <a class="sidebar-menu-button" data-toggle="collapse" href="#dashboards_menu" aria-expanded="true">
                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i>
                         <span class="sidebar-menu-text"> {{ __('admin.dashboard') }} </span>
                         <span class="ml-auto sidebar-menu-toggle-icon"></span>
                     </a>
-                    <ul class="sidebar-submenu collapse" id="dashboards_menu">
+                    <ul class="sidebar-submenu collapse show" id="dashboards_menu">
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button" href="{{ url('admin/dashboard') }}">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-chart-bar"></i>

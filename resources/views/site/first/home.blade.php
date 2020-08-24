@@ -318,7 +318,7 @@
                                         <h3>
                                             <a href="{{ route('blog.show', ['id' => $blog->id, 'title' => $blog->$title]) }}"> {{ $blog->$title }} </a>
                                         </h3>
-                                        <p>{!! substr($blog->content, 0, 50) !!} </p>
+                                        <p>{!! substr($blog->$content, 0, 50) !!} </p>
                                         <ul>
                                             <li>
                                                 <a href="{{ route('blog.show', ['id' => $blog->id, 'title' => $blog->$title]) }}">
