@@ -55,11 +55,7 @@
 	<!-- End Main Slider -->
 
 
-    @if($page_filter != null)
-
-    @if (in_array('about', $page_filter))
 	<!-- Health Section -->
-
 	<section class="health-section">
 		<div class="auto-container">
 			<div class="inner-container">
@@ -99,92 +95,86 @@
 		</div>
 	</section>
 	<!-- End Health Section -->
-    @endif
 
-    @if (in_array('our_services', $page_filter))
-        <!-- Services Section -->
-        <section class="featured-section">
-            <div class="auto-container">
-                <div class="row clearfix">
-                    <!-- Feature Block -->
-                    @foreach ($services as $index => $service)
-                    <div class="feature-block col-lg-3 col-md-6 col-sm-12">
-                        <div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                            @php
-                                $title = session('lang') . '_title';
-                                $desc = session('lang') . '_description';
-                            @endphp
-                            <div class="upper-box">
-                                <div class="icon flaticon-doctor-stethoscope"></div>
-                                <h3>
-                                    <a href="#">{{ $service->$title }}</a>
-                                </h3>
-                            </div>
-                            <div class="text">{{ substr($service->$desc, 0, 70) }}</div>
+
+    <!-- Services Section -->
+    <section class="featured-section">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <!-- Feature Block -->
+                @foreach ($services as $index => $service)
+                <div class="feature-block col-lg-3 col-md-6 col-sm-12">
+                    <div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        @php
+                            $title = session('lang') . '_title';
+                            $desc = session('lang') . '_description';
+                        @endphp
+                        <div class="upper-box">
+                            <div class="icon flaticon-doctor-stethoscope"></div>
+                            <h3>
+                                <a href="#">{{ $service->$title }}</a>
+                            </h3>
                         </div>
+                        <div class="text">{{ substr($service->$desc, 0, 70) }}</div>
                     </div>
-                    @if($index == 3)
-                        @break
-                    @endif
-                    @endforeach
                 </div>
+                @if($index == 3)
+                    @break
+                @endif
+                @endforeach
             </div>
-        </section>
-        <!-- End Featured Section -->
-    @endif
+        </div>
+    </section>
+    <!-- End Featured Section -->
 
 
-    @if (in_array('team_members', $page_filter))
-        <!-- Team Section -->
-        <section class="team-section">
-            <div class="auto-container">
-                <!-- Sec Title -->
-                <div class="sec-title centered">
-                    <h2> {{ __('home.meet_team') }} </h2>
-                    <div class="separator"></div>
-                </div>
-                <div class="row clearfix">
-                    @foreach ($teamMembers as $index => $teamMember)
-                    <div class="team-block col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                            <div class="image">
-                                <img src="{{ $teamMember->member_image }}" alt="" />
-                                <div class="overlay-box">
-                                    <ul class="social-icons">
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                    </ul>
-                                    <a href="javascript:void(0);" class="appointment">{{ __('home.get_appointment') }}</a>
-                                </div>
-                            </div>
-                            <div class="lower-content">
-                                <h3>
-                                    @php
-                                        $name = session('lang') . '_name';
-                                        $title = session('lang') . '_title';
-                                    @endphp
-                                    <a href="javascript:void(0);">
-                                        {{ $teamMember->role == 1 ? 'Dr' : 'Nur' }}. {{ $teamMember->$name }}
-                                    </a>
-                                </h3>
-                                <div class="designation"> {{ $teamMember->$title }} </div>
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="auto-container">
+            <!-- Sec Title -->
+            <div class="sec-title centered">
+                <h2> {{ __('home.meet_team') }} </h2>
+                <div class="separator"></div>
+            </div>
+            <div class="row clearfix">
+                @foreach ($teamMembers as $index => $teamMember)
+                <div class="team-block col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="image">
+                            <img src="{{ $teamMember->member_image }}" alt="" />
+                            <div class="overlay-box">
+                                <ul class="social-icons">
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                                <a href="javascript:void(0);" class="appointment">{{ __('home.get_appointment') }}</a>
                             </div>
                         </div>
+                        <div class="lower-content">
+                            <h3>
+                                @php
+                                    $name = session('lang') . '_name';
+                                    $title = session('lang') . '_title';
+                                @endphp
+                                <a href="javascript:void(0);">
+                                    {{ $teamMember->role == 1 ? 'Dr' : 'Nur' }}. {{ $teamMember->$name }}
+                                </a>
+                            </h3>
+                            <div class="designation"> {{ $teamMember->$title }} </div>
+                        </div>
                     </div>
-                    @endforeach
                 </div>
-
+                @endforeach
             </div>
 
-        </section>
-        <!-- End Team Section -->
+        </div>
 
-    @endif
+    </section>
+    <!-- End Team Section -->
 
-    @if (in_array('testimonials', $page_filter))
 
     <!-- Testimonial Section Two -->
 	<section class="testimonial-section-two">
@@ -230,10 +220,8 @@
 	</section>
 	<!-- End Testimonial Section Two -->
 
-    @endif
 
 	<!-- Counter Section -->
-
 	<section class="counter-section style-two" style="background-image: url({{ asset('site/part2/images/background/pattern-3.png') }})">
 		<div class="auto-container">
 			<!-- Fact Counter -->
@@ -335,7 +323,6 @@
 	<!-- End Doctor Info Section -->
 
 
-    @if (in_array('latest_blog', $page_filter))
     <!-- News Section Two -->
     <section class="news-section-two">
     	<div class="auto-container">
@@ -389,77 +376,86 @@
 		</div>
 
 	</section>
-    @endif
 
 
-    	<!--Clients Section-->
-        <section class="clients-section">
-            <div class="outer-container">
-                <div class="sponsors-outer">
-                    <!--Sponsors Carousel-->
-                    <ul class="sponsors-carousel owl-carousel owl-theme">
-                        <li class="slide-item">
-                            <figure class="image-box">
-                                <a href="#">
-                                    <img src="{{ asset('site/part2/images/clients/1.png') }} " alt="">
-                                </a>
-                            </figure>
-                        </li>
+    <!--Clients Section-->
+    <section class="clients-section">
+        <div class="outer-container">
+            <div class="sponsors-outer">
+                <!--Sponsors Carousel-->
+                <ul class="sponsors-carousel owl-carousel owl-theme">
+                    <li class="slide-item">
+                        <figure class="image-box">
+                            <a href="#">
+                                <img src="{{ asset('site/part2/images/clients/1.png') }} " alt="">
+                            </a>
+                        </figure>
+                    </li>
 
-                        <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{ asset('site/part2/images/clients/2.png') }} " alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{ asset('site/part2/images/clients/2.png') }} " alt=""></a></figure></li>
 
-                        <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{ asset('site/part2/images/clients/3.png') }} " alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{ asset('site/part2/images/clients/3.png') }} " alt=""></a></figure></li>
 
-                        <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{ asset('site/part2/images/clients/4.png') }} " alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{ asset('site/part2/images/clients/4.png') }} " alt=""></a></figure></li>
 
-                        <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{ asset('site/part2/images/clients/5.png') }} " alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{ asset('site/part2/images/clients/5.png') }} " alt=""></a></figure></li>
 
-                        <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{ asset('site/part2/images/clients/1.png') }} " alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{ asset('site/part2/images/clients/1.png') }} " alt=""></a></figure></li>
 
-                        <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{ asset('site/part2/images/clients/2.png') }} " alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{ asset('site/part2/images/clients/2.png') }} " alt=""></a></figure></li>
 
-                    </ul>
-                </div>
+                </ul>
             </div>
-        </section>
-        <!--End Clients Section-->
+        </div>
+    </section>
+    <!--End Clients Section-->
 
-        <!-- Newsletter Section -->
-        <section class="newsletter-section">
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
 
-            <div class="auto-container">
+        <div class="auto-container">
 
-                <div class="row clearfix">
+            <div class="row clearfix">
 
-                    <!-- Title Column -->
-                    <div class="title-column col-lg-6 col-md-12 col-sm-12">
-                        <div class="inner-column">
-                            <h2>{{ __('home.subscribe_newsletter') }}</h2>
-                            <div class="text">{{ __('home.to_receive_newsletter') }}</div>
-                        </div>
+                <!-- Title Column -->
+                <div class="title-column col-lg-6 col-md-12 col-sm-12">
+                    <div class="inner-column">
+                        <h2>{{ __('home.subscribe_newsletter') }}</h2>
+                        <div class="text">{{ __('home.to_receive_newsletter') }}</div>
                     </div>
-                    <!-- Form Column -->
-                    <div class="form-column col-lg-6 col-md-12 col-sm-12">
-                        <div class="inner-column">
-                            <!-- Subscribe Form -->
-                            <div class="subscribe-form">
-                                <form method="post" action="#">
-                                    @csrf
-                                    <div class="form-group">
-                                        <input type="email" name="email" value="" placeholder="{{ __('home.email_contact') }}" required>
-                                        <button type="submit" class="theme-btn btn-style-two"><span class="txt">{{ __('home.subscribe') }}</span></button>
-                                    </div>
-                                </form>
-                            </div>
+                </div>
+                <!-- Form Column -->
+                <div class="form-column col-lg-6 col-md-12 col-sm-12">
+                    <div class="inner-column">
+                        <!-- Subscribe Form -->
+                        <div class="subscribe-form">
+                            <form method="post" action="#">
+                                @csrf
+                                <div class="form-group">
+                                    <input type="email" name="email" value="" placeholder="{{ __('home.email_contact') }}" required>
+                                    <button type="submit" class="theme-btn btn-style-two"><span class="txt">{{ __('home.subscribe') }}</span></button>
+                                </div>
+                            </form>
                         </div>
-
                     </div>
 
                 </div>
 
             </div>
 
-        </section>
-        <!-- End Newsletter Section -->
-    @endif
+        </div>
+
+    </section>
+    <!-- End Newsletter Section -->
 @endsection
+@push('scripts')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('a').on('click', function(e) {
+                if (!$(this).hasClass('allowedLink')) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+@endpush

@@ -16,6 +16,12 @@
                                 <span class="sidebar-menu-text"> {{ __('admin.stat') }} </span>
                             </a>
                         </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{{ url('admin/paids') }}">
+                                <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-money-bill-wave"></i>
+                                <span class="sidebar-menu-text"> {{ __('admin.total_paid') }} </span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 

@@ -487,3 +487,14 @@
         </section>
         <!-- End Newsletter Section -->
 @endsection
+@push('scripts')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('a').on('click', function(e) {
+                if (!$(this).hasClass('allowedLink')) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+@endpush

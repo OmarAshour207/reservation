@@ -154,8 +154,8 @@ return [
     'le'                    => '-LE',
     'total_appointments'    => 'Total Appointments',
     'appointments_status'   => 'Appointments Status',
-    'search'                => 'Search'
-
+    'search'                => 'Search',
+    'total_paid'            => 'Total Paids',
 
 
 ];

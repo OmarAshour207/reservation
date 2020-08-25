@@ -64,22 +64,86 @@
 
 <body>
 
-    <div class="page-wrapper">
+    <div class="page-wrapper {{ session('lang') == 'ar' ? 'rtl' : '' }}">
 
     <!-- Preloader -->
     <div class="preloader"></div>
     <!-- End Preloader -->
 
-    @include('site.fifth.layouts.header')
+    @include('site.seventh.layouts.header')
 
     @include('dashboard.partials.session')
 
     @yield('content')
 
-    @include('site.fifth.layouts.footer')
+    @include('site.seventh.layouts.footer')
 
     <!--Scroll to top-->
     <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
+
+    <!-- sidebar cart item -->
+    <div class="xs-sidebar-group info-group">
+        <div class="xs-overlay xs-bg-black"></div>
+        <div class="xs-sidebar-widget">
+            <div class="sidebar-widget-container">
+                <div class="widget-heading">
+                    <a href="#" class="close-side-widget">
+                        X
+                    </a>
+                </div>
+
+                <div class="sidebar-textwidget">
+
+                <!-- Sidebar Info Content -->
+                <div class="sidebar-info-contents">
+                    <div class="content-inner">
+                        <div class="logo">
+                            <a href="{{ url('/') }}"><img src="{{ getLogo() }}" alt="" /></a>
+                        </div>
+
+                        <div class="content-box">
+                            <h2> {{ __('home.about_us') }} </h2>
+                            @php
+                                $desc = session('lang') . '_description';
+                            @endphp
+                            <p class="text"> {{ $aboutUs->$desc }} </p>
+                            <a href="#" class="theme-btn btn-style-two"><span class="txt">Consultation</span></a>
+                        </div>
+
+                        <div class="contact-info">
+                            <h2>{{ __('admin.contacts') }}</h2>
+                            <ul class="list-style-two">
+                                <li><span class="icon flaticon-map"></span>{{ setting(session('lang').'_address') }}</li>
+                                <li><span class="icon flaticon-telephone"></span>{{ setting('phone') }}</li>
+                                <li><span class="icon flaticon-message-1"></span>{{ setting('email') }}</li>
+                            </ul>
+
+                        </div>
+
+                        <!-- Social Box -->
+
+                        <ul class="social-box">
+                            @php
+                                $socialSites = ['facebook', 'twitter', 'instagram'];
+                            @endphp
+                            @for($i = 0; $i < count($socialSites); $i++)
+                                @if(setting($socialSites[$i]) != '')
+                                    <li>
+                                        <a href="{{ setting($socialSites[$i]) }}">
+                                            <span class="fab fa-{{ $socialSites[$i] }}"></span>
+                                        </a>
+                                    </li>
+                                @endif
+                            @endfor
+                        </ul>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END sidebar widget item -->
+
 
     <!--Search Popup-->
     <div id="search-popup" class="search-popup">
@@ -131,6 +195,12 @@
     <script src="{{ asset('site/part2/js/owl.js') }}"></script>
 
     <script src="{{ asset('site/part2/js/wow.js') }}"></script>
+
+    <script src="{{ asset('site/part2/js/nav-tool.js') }}"></script>
+
+    <script src="{{ asset('site/part2/js/jquery.magnific-popup.min.js') }}"></script>
+
+    <script src="{{ asset('site/part2/js/main.js') }}"></script>
 
     <script src="{{ asset('site/part2/js/swiper.min.js') }}"></script>
 

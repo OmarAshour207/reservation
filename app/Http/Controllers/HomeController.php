@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\About;
+use App\Admin;
+use App\Appointment;
 use App\Blog;
 use App\Contactus;
 use App\Project;
+use App\Reservation;
 use App\Service;
 use App\Slider;
 use App\TeamMember;
@@ -42,11 +45,21 @@ class HomeController extends Controller
         $themeName = getThemeName();
         $sliders = Slider::orderBy('id', 'desc')->limit(3)->get();
 
+        $times = Reservation::where('doctor_id' , 2)->get();
+        $all_patients = Appointment::all()->count();
+        $all_doctors = Admin::all()->count();
+        $success_mission = Appointment::where('status', 1)->count();
+
+        $doctors = Admin::where('role', '!=', '0')->where('role', '!=', 2)->get();
+
         return view('site.' . $themeName . '.home',
-            compact('page_filter', 'sliders',
-                            'aboutUs', 'contactUs', 'projects',
-                            'services', 'teamMembers',
-                            'testimonials', 'blogs'));
+                    compact('page_filter', 'sliders',
+                            'aboutUs', 'contactUs',
+                            'projects','services',
+                            'teamMembers','testimonials',
+                            'blogs', 'times',
+                            'all_patients', 'all_doctors',
+                            'success_mission', 'doctors'));
     }
 
     public function checkVisitor()

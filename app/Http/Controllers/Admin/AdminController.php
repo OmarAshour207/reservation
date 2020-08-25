@@ -24,7 +24,6 @@ class AdminController extends Controller
     public function showDashboard()
     {
 
-
         session('lang') ?? session()->put('lang', app()->getLocale());
         $services_count = Service::all()->count();
         $projects_count = Project::all()->count();
@@ -185,4 +184,14 @@ class AdminController extends Controller
         return $status;
     }
 
+    public function showPaid()
+    {
+        $query = Appointment::whenSearch(request())
+                ->where('status', 1)
+                ->with('doctor', 'user');
+        $total_paids = $query->sum('price');
+        $appointments = $query->paginate(20);
+
+        return view('dashboard.paid', compact('appointments', 'total_paids'));
+    }
 }

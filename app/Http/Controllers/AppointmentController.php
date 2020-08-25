@@ -55,7 +55,7 @@ class AppointmentController extends Controller
             $reservations = Reservation::where('created_at', '>', Carbon::yesterday())
                     ->where('doctor_id', $request->doctor_id)
                     ->get();
-            return view('site.first.ajax.days', compact('reservations'));
+            return view('site.eighth.ajax.days', compact('reservations'));
         }
     }
 

@@ -63,5 +63,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'] , function () {
         Route::resource('appointments', 'AppointmentController');
         Route::post('change/status', 'AppointmentController@changeStatus')->name('change.status');
 
+        Route::get('paids', 'AdminController@showPaid');
+
     });
 });

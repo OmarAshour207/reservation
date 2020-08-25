@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\About;
+use App\Admin;
+use App\Appointment;
 use App\Blog;
 use App\Contactus;
 use App\Http\Controllers\Controller;
 use App\Project;
+use App\Reservation;
 use App\Service;
 use App\Slider;
 use App\TeamMember;
@@ -66,10 +69,22 @@ class ThemeController extends Controller
         $name = $request->route('name');
         $sliders = $name == 'second' ? Slider::orderBy('id', 'desc')->limit(2)->get() : Slider::orderBy('id', 'desc')->limit(3)->get();
         $contactUs = Contactus::first();
+
+        $times = Reservation::where('doctor_id' , 2)->get();
+        $all_patients = Appointment::all()->count();
+        $all_doctors = Admin::all()->count();
+        $success_mission = Appointment::where('status', 1)->count();
+
+        $doctors = Admin::where('role', '!=', '0')->where('role', '!=', 2)->get();
+
         return view('dashboard.themes.' . $name ,
-            compact('sliders',
-                'aboutUs', 'projects',
-                'services', 'teamMembers',
-                'testimonials', 'blogs', 'contactUs'));
+                compact('sliders','aboutUs',
+                    'projects','services',
+                    'teamMembers','testimonials',
+                    'blogs', 'contactUs',
+                    'times', 'all_patients',
+                    'all_doctors','success_mission',
+                    'doctors'
+                    ));
     }
 }

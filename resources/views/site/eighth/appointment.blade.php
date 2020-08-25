@@ -89,7 +89,7 @@
                                         <input type="hidden" name="doctor_id" value="{{ request()->route('id') }}">
 
                                         <div class="col-md-6 col-sm-12 col-xs-12 form-group">
-                                                <i class="fa fa-calendar"></i>
+                                            <i class="fa fa-calendar"></i>
                                             <label> {{ __('home.day') }} </label>
                                             <select class="days" name="day">
                                                 <option> {{ __('home.choose_day') }} </option>

@@ -116,6 +116,10 @@ return [
     'subscribe'             => 'Subscribe',
     'article'               => 'Article',
     'have_question'         => 'Do you have a Question?',
+    'doctor_timetable'      => 'Doctor Timetable',
+    'success_missions'      => 'Success Missions',
+    'why_choose_us'         => 'Why Choose Us',
+'what_service_we_provide'   => 'What Service We Provide',
 
 
 ];

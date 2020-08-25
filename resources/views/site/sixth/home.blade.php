@@ -1,340 +1,327 @@
-@extends('site.fifth.layouts.app')
+@extends('site.sixth.layouts.app')
 
 @section('content')
 
-	<!-- Main Slider -->
-	<section class="main-slider">
+		<!-- Main Slider Two -->
+        <section class="main-slider-two">
+            <div class="banner-carousel">
+                <!-- Swiper -->
+                <div class="swiper-wrapper">
+                    @foreach ($sliders as $index => $slider)
 
-		<div class="banner-carousel">
-            <!-- Swiper -->
-			<div class="swiper-wrapper">
-                @foreach ($sliders as $slider)
-				<div class="swiper-slide slide" style="background-image:url('{{ $slider->slider_image }}')">
-					<div class="auto-container">
-						<div class="content clearfix">
-                            @php
-                                $title = session('lang') . '_title';
-                                $desc = session('lang') . '_description';
-                            @endphp
-							<div class="title">{{ $slider->$title }}</div>
-							<div class="text">
-                                {{ $slider->$desc }}
+                    <div class="swiper-slide slide">
+
+                        <div class="slider-icons">
+
+                        <span class="icon-one"><img src="{{ asset('site/part2/images/icons/icon-1.png') }}" alt="" /></span>
+
+                        <span class="icon-two"><img src="{{ asset('site/part2/images/icons/icon-2.png') }}" alt="" /></span>
+
+                        <span class="icon-three"><img src="{{ asset('site/part2/images/icons/icon-3.png') }}" alt="" /></span>
+
+                        <span class="icon-four"><img src="{{ asset('site/part2/images/icons/icon-4.png') }}" alt="" /></span>
+
+                        <span class="icon-five"><img src="{{ asset('site/part2/images/icons/icon-2.png') }}" alt="" /></span>
+
+                        <span class="icon-six"><img src="{{ asset('site/part2/images/icons/icon-5.png') }}" alt="" /></span>
+
+                        <span class="icon-seven"><img src="{{ asset('site/part2/images/icons/icon-3.png') }}" alt="" /></span>
+
+                        <span class="icon-eight"><img src="{{ asset('site/part2/images/icons/icon-3.png') }}" alt="" /></span>
+
+                        <span class="icon-nine"><img src="{{ asset('site/part2/images/icons/icon-2.png') }}" alt="" /></span>
+
+                    </div>
+                        <div class="auto-container">
+                            <div class="row clearfix">
+                                <!-- Image Column -->
+                                <div class="image-column col-lg-7 col-md-12 col-sm-12">
+                                    <div class="inner-column">
+                                        <div class="image">
+                                            <img src="{{ $slider->slider_image }}" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Content Column -->
+                                <div class="content-column col-lg-5 col-md-12 col-sm-12">
+                                    <div class="inner-column">
+                                        @php
+                                            $title = session('lang') . '_title';
+                                            $desc = session('lang') . '_description';
+                                        @endphp
+                                        <div class="title">
+                                            {{ $slider->$title }}
+                                        </div>
+                                        <h2>Full Medical Care</h2>
+                                        <div class="text">
+                                            {{ $slider->$desc }}
+                                        </div>
+                                        <a href="{{ url('services') }}" class="theme-btn btn-style-two">
+                                            <span class="txt">{{ __('admin.our_services') }}</span>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-							<div class="btn-box clearfix">
-                                <a href="{{ url('services') }}" class="theme-btn btn-style-two">
-                                    <span class="txt">{{ __('home.our_services') }}</span>
-                                </a>
-                                <a href="{{ url('contact-us') }}" class="theme-btn phone-btn">
-                                    <span class="icon flaticon-call"></span>{{ setting('phone') }}
-                                </a>
-							</div>
-						</div>
-					</div>
-				</div>
-                @endforeach
+
+                        </div>
+
+                    </div>
+                    @if ($index == 2)
+                        @break
+                    @endif
+                    @endforeach
+                </div>
+
+                <!-- Add Pagination -->
+
+                <div class="swiper-pagination"></div>
+
+                <!-- Add Arrows -->
+
+                <div class="swiper-button-next"></div>
+
+                <div class="swiper-button-prev"></div>
+
             </div>
-			<!-- Add Pagination -->
 
-			<div class="swiper-pagination"></div>
+        </section>
 
-			<!-- Add Arrows -->
+        <!-- End Main Slider -->
 
-			<div class="swiper-button-next"></div>
-
-			<div class="swiper-button-prev"></div>
-
-		</div>
-
-	</section>
-	<!-- End Main Slider -->
 
 
     @if($page_filter != null)
 
     @if (in_array('about', $page_filter))
-        <!-- Fluid Section One -->
-        <section class="fluid-section-one">
-            <div class="outer-section clearfix">
-            <!--Image Column-->
-                <div class="image-column" style="background-image: url('{{ $aboutUs->about_image }}')">
-                    <div class="image">
-                        <img src="{{ $aboutUs->about_image }}" alt="">
+        <!-- Welcome Section -->
+        @php
+            $desc = session('lang') . '_description';
+        @endphp
+        <section class="welcome-section">
+
+            <div class="image-layer" style="background-image:url({{ asset('site/part2/images/background/pattern-2.png') }})"></div>
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <!-- Content Column -->
+                    <div class="content-column col-lg-7 col-md-12 col-sm-12">
+                        <div class="inner-column">
+                            <div class="sec-title">
+                                <h2>{{ $aboutUs->$title }}</h2>
+                                <div class="separator"></div>
+                            </div>
+                            <div class="text">
+                                <p> {{ $aboutUs->$desc }} </p>
+                            </div>
+
+                            <a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-btn"><span class="icon flaticon-play-arrow"></span> {{ __('home.about_us') }}</a>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Image Column -->
+
+                    <div class="image-column col-lg-5 col-md-12 col-sm-12">
+
+                        <div class="inner-column wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+
+                            <div class="image">
+
+                                <img src="{{ $aboutUs->about_image }}" alt="" />
+
+                                <div class="icon-outer">
+                                    <span class="icon-inner"><span class="icon flaticon-rocket-ship"></span></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!--End Image Column-->
 
-                <!--Content Column-->
-                <div class="content-column">
-                    <div class="content-box">
-                        <div class="sec-title">
-                            <h2>Pioneering in Health.</h2>
-                            <div class="separator style-two"></div>
-                        </div>
-                        <div class="text">
+            </div>
+
+        </section>
+    	<!-- End Welcome Section -->
+    @endif
+
+
+    @if (in_array('our_projects', $page_filter))
+	<!-- Department Section Two -->
+	<section class="department-section-two" style="background-image:url({{ asset('site/part2/images/background/3.png') }})">
+		<div class="auto-container">
+			<div class="sec-title light centered">
+				<h2>{{ __('admin.our_projects') }}</h2>
+				<div class="separator"></div>
+			</div>
+
+			<div class="three-item-carousel owl-carousel owl-theme">
+				@foreach ($projects as $project)
+				<!-- Department Block Two -->
+				<div class="department-block-two">
+					<div class="inner-box">
+						<div class="image">
+							<a href="#">
+                                <img src="{{ $project->project_image }}" alt="" /></a>
+						</div>
+						<div class="lower-content">
                             @php
+                                $title = session('lang') . '_title';
                                 $desc = session('lang') . '_description';
                             @endphp
-                            <p> {{ $aboutUs->$desc }} </p>
-                        </div>
-                        <div class="row clearfix">
-                            <div class="column col-lg-6 col-md-6 col-sm-12">
-                                <ul class="list-style-one">
-                                    @foreach ($services as $index => $service)
-                                    <li>
-                                        <span class="icon flaticon-medical-stethoscope-variant"></span>
-                                        @php
-                                            $title = session('lang') . '_title';
-                                        @endphp
-                                        {{ $service->$title }}
-                                    </li>
-                                    @if ($index == 3)
-                                        @break;
-                                    @endif
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+							<h3>
+                                <a href="#">{{ $project->$title }}</a>
+                            </h3>
 
-        </section>
+							<div class="text">
+                                {{ $project->$desc }}
+                            </div>
+
+							<a href="#" class="read-more">{{ __('home.read_more') }} <span class="arrow fas fa-angle-double-right"></span></a>
+
+						</div>
+
+					</div>
+
+                </div>
+                @endforeach
+			</div>
+		</div>
+	</section>
+	<!-- End Department Section Two -->
     @endif
 
+    @if (in_array('our_services', $page_filter))
+    	<!-- Services Section Two -->
 
-    @if (in_array('services', $page_filter))
-        <!-- Services Section -->
-        <section class="services-section">
-            <div class="auto-container">
-                <!-- Sec Title -->
-                <div class="sec-title centered">
-                    <h2>{{ __('home.our_services') }}</h2>
-                    <div class="separator"></div>
+	<section class="services-section-two" style="background-image:url({{ asset('site/part2/images/background/4.jpg') }})">
+		<div class="auto-container">
+			<!-- Sec Title -->
+			<div class="sec-title centered">
+				<h2>{{ __('home.our_services') }}</h2>
+				<div class="separator"></div>
+			</div>
+			<div class="row clearfix">
+				<!-- Services Block Three -->
+                @foreach ($services as $service)
+                <div class="service-block-three col-lg-4 col-md-6 col-sm-12">
+					<div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+						<div class="border-one"></div>
+						<div class="border-two"></div>
+						<div class="icon-box">
+							<span class="icon flaticon-stethoscope"></span>
+                        </div>
+                        @php
+                            $title = session('lang') . '_title';
+                            $desc = session('lang') . '_description';
+                        @endphp
+						<h3><a href="#">{{ $service->$title }}</a></h3>
+						<div class="text"> {{ $service->$desc }} </div>
+
+					</div>
                 </div>
-                <div class="row clearfix">
-                    <!-- Left Column -->
-                    <div class="left-column pull-left col-lg-4 col-md-12 col-sm-12">
-                        <div class="inner-column">
-                            @foreach ($services as $index => $service)
-                                <!-- Service Block -->
-                                <div class="service-block">
-                                    @php
-                                        $title = session('lang') . '_title';
-                                        $desc = session('lang') . '_description';
-                                    @endphp
-                                    <div class="inner-box wow fadeInLeft" data-wow-delay="250ms" data-wow-duration="1500ms">
-                                        <div class="icon-box">
-                                            <span class="icon flaticon-operating-room"></span>
-                                        </div>
-                                        <h3>
-                                            <a href="#">
-                                                {{ $service->$title }}
-                                            </a>
-                                        </h3>
-                                        <div class="text">
-                                            {{ $service->$desc }}
-                                        </div>
-                                    </div>
-                                </div>
-                                @if ($index == 2)
-                                    @break
-                                @endif
-                            @endforeach
-                        </div>
-                    </div>
+                @endforeach
+			</div>
 
-                    <!-- Circles Column -->
-                    <div class="circles-column col-lg-4 col-md-12 col-sm-12">
-                        <div class="inner-column">
-                            <div class="circles">
-                                <div class="circle-one"></div>
-                                <div class="circle-two"></div>
-                                <div class="circle-three"></div>
-                            </div>
-                        </div>
-                    </div>
+		</div>
 
-                    <!-- Right Column -->
-                    <div class="right-column pull-right col-lg-4 col-md-12 col-sm-12">
-                        <div class="inner-column">
-                            @foreach ($services as $index => $service)
-                                @if ($index > 2)
-                                <!-- Service Block -->
-                                @php
-                                    $title = session('lang') . '_title';
-                                    $desc = session('lang') . '_description';
-                                @endphp
-                                <div class="service-block-two">
-                                    <div class="inner-box wow fadeInRight" data-wow-delay="250ms" data-wow-duration="1500ms">
-                                        <div class="icon-box">
-                                            <span class="icon flaticon-pharmacy"></span>
-                                        </div>
-                                        <h3>
-                                            <a href="{{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }}">
-                                                {{ $service->$title }}
-                                            </a>
-                                        </h3>
-                                        <div class="text">
-                                            {{ $service->$desc }}
-                                        </div>
-                                    </div>
-                                </div>
-                                @if ($index == 5)
-                                    @break
-                                @endif
-                                @endif
-                            @endforeach
+	</section>
 
+	<!-- End Services Section Two -->
 
-                        </div>
-
-                    </div>
-                </div>
-
-
-
-            </div>
-
-        </section>
     @endif
-
-        <!-- Counter Section -->
-        <section class="counter-section" style="background-image: url({{ asset('site/part2/images/background/pattern-3.png') }})">
-            <div class="auto-container">
-                <!-- Fact Counter -->
-                <div class="fact-counter">
-                    <div class="row clearfix">
-                        <!--Column-->
-                        <div class="column counter-column col-lg-4 col-md-6 col-sm-12">
-                            <div class="inner wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                                <div class="content">
-                                    <div class="count-outer count-box">
-                                        <span class="count-text" data-speed="2500" data-stop="2350">0</span>
-                                    </div>
-                                    <h4 class="counter-title">Satisfied Patients</h4>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--Column-->
-                        <div class="column counter-column col-lg-4 col-md-6 col-sm-12">
-                            <div class="inner wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1500ms">
-                                <div class="content">
-                                    <div class="count-outer count-box alternate">
-                                        +<span class="count-text" data-speed="3000" data-stop="350">0</span>
-                                    </div>
-                                    <h4 class="counter-title">Doctor’s Team</h4>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--Column-->
-                        <div class="column counter-column col-lg-4 col-md-6 col-sm-12">
-                            <div class="inner wow fadeInLeft" data-wow-delay="600ms" data-wow-duration="1500ms">
-                                <div class="content">
-                                    <div class="count-outer count-box">
-                                        <span class="count-text" data-speed="3000" data-stop="2150">0</span>
-                                    </div>
-                                    <h4 class="counter-title">Success Mission</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-        <!-- End Counter Section -->
 
     @if (in_array('team_members', $page_filter))
-        <!-- Team Section -->
-        <section class="team-section">
-            <div class="auto-container">
-                <!-- Sec Title -->
-                <div class="sec-title centered">
-                    <h2> {{ __('home.meet_team') }} </h2>
-                    <div class="separator"></div>
-                </div>
-                <div class="row clearfix">
+        <!-- Doctors Section -->
+    <section class="doctors-section style-two">
+
+        <div class="auto-container">
+            <!-- Features Tab -->
+            <div class="doctors-tabs tabs-box">
+                <ul class="doctors-thumb tab-buttons clearfix">
                     @foreach ($teamMembers as $index => $teamMember)
-                    <div class="team-block col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                            <div class="image">
-                                <img src="{{ $teamMember->member_image }}" alt="" />
-                                <div class="overlay-box">
-                                    <ul class="social-icons">
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                    </ul>
-                                    <a href="javascript:void(0);" class="appointment">{{ __('home.get_appointment') }}</a>
+                    <li data-tab="#doctor-tab-{{ $index+1 }}" class="tab-btn {{ $index == 0 ? 'active-btn' : '' }}">
+                        <div class="image-box">
+                            <figure>
+                                <img src="{{ $teamMember->member_image }}" alt="">
+                            </figure>
+                        </div>
+                    </li>
+                    @if ($index == 2)
+                        @break
+                    @endif
+                    @endforeach
+
+                </ul>
+
+                <!--Tabs Container-->
+                <div class="tabs-content">
+                    <!--Tab / Active Tab-->
+                    @foreach ($teamMembers as $index => $teamMember)
+                    @php
+                        $title = session('lang') . '_title';
+                        $name = session('lang') . '_name';
+                        $desc = session('lang') . '_description';
+                    @endphp
+                    <div class="doctor-info tab {{ $index == 0 ? 'active-tab' : '' }}" id="doctor-tab-{{ $index+1 }}">
+                        <div class="row clearfix">
+                            <!-- Image-column -->
+                            <div class="image-column col-lg-5 col-md-12 col-sm-12">
+                                <div class="inner-column">
+                                    <div class="image-box">
+                                        <a href="{{ $teamMember->member_image }}" class="lightbox-image" data-fancybox="Gallery">
+                                            <img src="{{ $teamMember->member_image }}" alt="">
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="lower-content">
-                                <h3>
-                                    @php
-                                        $name = session('lang') . '_name';
-                                        $title = session('lang') . '_title';
-                                    @endphp
-                                    <a href="javascript:void(0);">
-                                        {{ $teamMember->role == 1 ? 'Dr' : 'Nur' }}. {{ $teamMember->$name }}
-                                    </a>
-                                </h3>
-                                <div class="designation"> {{ $teamMember->$title }} </div>
+
+                            <!-- Image-column -->
+                            <div class="content-column col-lg-5 col-md-12 col-sm-12">
+                                <div class="inner-column">
+                                    <h3 class="name">
+                                        <a href="#">
+                                            {{ $teamMember->role == 1 ? 'Dr' : 'Nur' }}. {{ $teamMember->$name }}
+                                        </a>
+                                    </h3>
+
+                                    <span class="designation">{{ $teamMember->$title }}</span>
+
+                                    <p> {{ $teamMember->$desc }} </p>
+
+                                    <span class="timing"><i class="flaticon-alarm-clock"></i> Monday - Friday ( 5:00pm - 8pm )</span>
+
+                                    <div class="clearfix">
+
+                                        <div class="call-btn">
+
+                                            <a href="{{ url('appointments') }}" class="theme-btn btn-style-two">
+                                                <span class="txt">
+                                                    {{ __('home.get_appointment') }}
+                                                </span>
+                                            </a>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
                             </div>
                         </div>
+
                     </div>
+                    @if ($index == 2)
+                        @break
+                    @endif
                     @endforeach
                 </div>
-
             </div>
+        </div>
 
-        </section>
-        <!-- End Team Section -->
+    </section>
+    <!-- End Doctors Section -->
     @endif
-
-        <!-- FullWidth Section -->
-        <section class="fullwidth-section">
-            <div class="outer-container">
-                <div class="clearfix">
-                    <!-- Left Column -->
-                    <div class="left-column" style="background-image: url({{ asset('site/part2/images/background/1.jpg') }})">
-                        <div class="inner-column clearfix">
-                            <div class="content">
-                                <div class="icon-box">
-                                    <span class="icon flaticon-contract-1"></span>
-                                </div>
-                                <div class="title">{{ __('home.need_doctor') }}</div>
-
-                                <h2> {{ __('home.just_make_appointment') }} </h2>
-
-                                <a href="{{ url('appointments') }}" class="theme-btn btn-style-two">
-                                    <span class="txt">{{ __('home.get_appointment') }}</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Right Column -->
-                    <div class="right-column">
-                        <div class="inner-column">
-                            <!-- Upper Box -->
-                            <div class="upper-box">
-                                <div class="icon flaticon-alarm-clock"></div>
-                                <h3> {{ __('home.office_hours') }} </h3>
-                            </div>
-                            <ul class="time-list">
-                                <li class="clearfix"><span class="left-span pull-left">Monday - Friday</span><span class="right-span pull-right">08:00am - 10:00pm</span></li>
-                                <li class="clearfix"><span class="left-span pull-left">Saturday - Sunday</span><span class="right-span pull-right">09:00am - 06:00pm</span></li>
-                                <li class="clearfix"><span class="left-span pull-left">Emergency Services</span><span class="right-span pull-right">24 hours Open</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End FullWidth Section -->
 
     @if (in_array('testimonials', $page_filter))
         <!-- Testimonial Section -->
@@ -404,61 +391,37 @@
         <!-- End Testimonial Section Two -->
     @endif
 
-    @if (in_array('latest_blog', $page_filter))
-        <!-- News Section -->
-        <section class="news-section">
-            <div class="auto-container">
-                <!-- Sec Title -->
-                <div class="sec-title centered">
-                    <h2>{{ __('home.latest_blog') }}</h2>
-                    <div class="separator style-three"></div>
-                </div>
-                <div class="row clearfix">
-                    @foreach ($blogs as $blog)
-                    <!-- News Block -->
-                    <div class="news-block col-lg-4 col-md-6 col-sm-12">
-                        <div class="inner-box wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1500ms">
-                            <div class="image">
-                                @php
-                                    $title = session('lang') . '_title';
-                                    $content = session('lang') . '_content';
-                                @endphp
-                                <div class="category">{{ __('home.article') }}</div>
-                                <a href="{{ route('blog.show', ['id' => $blog->id, 'title' => $blog->$title]) }}">
-                                    <img src="{{ $blog->blog_image }}" alt="" />
-                                </a>
-                            </div>
-                            <div class="lower-content">
-                                <ul class="post-meta">
-                                    <li>
-                                        <a href="{{ route('blog.show', ['id' => $blog->id, 'title' => $blog->$title]) }}">
-                                            {{ $blog->created_at->format('d M Y') }}
+    @if (in_array('our_services', $page_filter))
+    <!-- Doctor Gallery Section -->
+	<section class="doctor-gallery-section">
+		<div class="outer-container">
+			<div class="doctor-gallery-carousel owl-carousel owl-theme">
+                <!-- Gallery Block -->
+                @foreach ($services as $service)
+                <div class="gallery-block">
+					<div class="inner-box">
+						<figure class="image-box">
+							<img src="{{ $service->service_image }}" alt="">
+							<!--Overlay Box-->
+							<div class="overlay-box">
+								<div class="overlay-inner">
+									<div class="content">
+										<a href="#" class="link">
+                                            <img src="{{ getLogo() }}" alt="" />
                                         </a>
-                                    </li>
-                                </ul>
-                                <h3>
-                                    <a href="{{ route('blog.show', ['id' => $blog->id, 'title' => $blog->$title]) }}">
-                                        {{ $blog->$title }}
-                                    </a>
-                                </h3>
+									</div>
+								</div>
+							</div>
+						</figure>
+					</div>
+				</div>
+                @endforeach
+			</div>
+		</div>
+	</section>
 
-                                <div class="text">
-                                    {!! substr($blog->$content, 0, 50) !!}
-                                </div>
+	<!-- End Gallery Section -->
 
-                                <a href="{{ route('blog.show', ['id' => $blog->id, 'title' => $blog->$title]) }}" class="read-more">
-                                    {{ __('home.read_more') }}
-                                </a>
-
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-
-        </section>
-        <!-- End News Section -->
     @endif
 
         <!-- Newsletter Section -->

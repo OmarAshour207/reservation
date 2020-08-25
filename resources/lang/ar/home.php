@@ -111,5 +111,9 @@ return [
     'subscribe'             => 'أشتراك',
     'article'               => 'مقال',
     'have_question'         => 'هل لديك ايه اسئله',
+    'doctor_timetable'      => 'مواعيد الدكتور',
+    'success_missions'      => 'المهمات الناجحه',
+    'why_choose_us'         => 'لماذا تختارنا',
+'what_service_we_provide'   => 'ما هي الخدمه التي نقدمها',
 
 ];

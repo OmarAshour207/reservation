@@ -183,9 +183,7 @@
 	</section>
 	<!-- End Services Section Three -->
 
-    @if($page_filter != null)
 
-    @if (in_array('about', $page_filter))
 	<!-- About Section -->
 	<section class="about-section">
 		<div class="auto-container">
@@ -245,10 +243,8 @@
 		</div>
 	</section>
 	<!-- End About Section -->
-    @endif
 
 
-    @if (in_array('our_services', $page_filter))
     <!-- Appointment Section Three -->
 	<section class="appointment-section-three">
 		<div class="auto-container">
@@ -378,10 +374,8 @@
 		</div>
 	</section>
 	<!-- End Appointment Section Three -->
-    @endif
 
 	<!-- Counter Section -->
-
 	<section class="counter-section style-two" style="background-image: url({{ asset('site/part2/images/background/pattern-3.png') }})">
 		<div class="auto-container">
 			<!-- Fact Counter -->
@@ -432,54 +426,52 @@
 	</section>
     <!-- End Counter Section -->
 
-    @if (in_array('team_members', $page_filter))
-        <!-- Team Section -->
-        <section class="team-section">
-            <div class="auto-container">
-                <!-- Sec Title -->
-                <div class="sec-title centered">
-                    <h2> {{ __('home.meet_team') }} </h2>
-                    <div class="separator"></div>
-                </div>
-                <div class="row clearfix">
-                    @foreach ($teamMembers as $index => $teamMember)
-                    <div class="team-block col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                            <div class="image">
-                                <img src="{{ $teamMember->member_image }}" alt="" />
-                                <div class="overlay-box">
-                                    <ul class="social-icons">
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                    </ul>
-                                    <a href="javascript:void(0);" class="appointment">{{ __('home.get_appointment') }}</a>
-                                </div>
-                            </div>
-                            <div class="lower-content">
-                                <h3>
-                                    @php
-                                        $name = session('lang') . '_name';
-                                        $title = session('lang') . '_title';
-                                    @endphp
-                                    <a href="javascript:void(0);">
-                                        {{ $teamMember->role == 1 ? 'Dr' : 'Nur' }}. {{ $teamMember->$name }}
-                                    </a>
-                                </h3>
-                                <div class="designation"> {{ $teamMember->$title }} </div>
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="auto-container">
+            <!-- Sec Title -->
+            <div class="sec-title centered">
+                <h2> {{ __('home.meet_team') }} </h2>
+                <div class="separator"></div>
+            </div>
+            <div class="row clearfix">
+                @foreach ($teamMembers as $index => $teamMember)
+                <div class="team-block col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="image">
+                            <img src="{{ $teamMember->member_image }}" alt="" />
+                            <div class="overlay-box">
+                                <ul class="social-icons">
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                                <a href="javascript:void(0);" class="appointment">{{ __('home.get_appointment') }}</a>
                             </div>
                         </div>
+                        <div class="lower-content">
+                            <h3>
+                                @php
+                                    $name = session('lang') . '_name';
+                                    $title = session('lang') . '_title';
+                                @endphp
+                                <a href="javascript:void(0);">
+                                    {{ $teamMember->role == 1 ? 'Dr' : 'Nur' }}. {{ $teamMember->$name }}
+                                </a>
+                            </h3>
+                            <div class="designation"> {{ $teamMember->$title }} </div>
+                        </div>
                     </div>
-                    @endforeach
                 </div>
-
+                @endforeach
             </div>
 
-        </section>
-        <!-- End Team Section -->
-    @endif
+        </div>
+
+    </section>
+    <!-- End Team Section -->
 
 	<section class="provider-section">
 		<div class="auto-container">
@@ -520,45 +512,54 @@
 		</div>
 
 	</section>
-
 	<!-- End Provider Section -->
 
-        <!-- Newsletter Section -->
-        <section class="newsletter-section">
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
 
-            <div class="auto-container">
+        <div class="auto-container">
 
-                <div class="row clearfix">
+            <div class="row clearfix">
 
-                    <!-- Title Column -->
-                    <div class="title-column col-lg-6 col-md-12 col-sm-12">
-                        <div class="inner-column">
-                            <h2>{{ __('home.subscribe_newsletter') }}</h2>
-                            <div class="text">{{ __('home.to_receive_newsletter') }}</div>
-                        </div>
+                <!-- Title Column -->
+                <div class="title-column col-lg-6 col-md-12 col-sm-12">
+                    <div class="inner-column">
+                        <h2>{{ __('home.subscribe_newsletter') }}</h2>
+                        <div class="text">{{ __('home.to_receive_newsletter') }}</div>
                     </div>
-                    <!-- Form Column -->
-                    <div class="form-column col-lg-6 col-md-12 col-sm-12">
-                        <div class="inner-column">
-                            <!-- Subscribe Form -->
-                            <div class="subscribe-form">
-                                <form method="post" action="#">
-                                    @csrf
-                                    <div class="form-group">
-                                        <input type="email" name="email" value="" placeholder="{{ __('home.email_contact') }}" required>
-                                        <button type="submit" class="theme-btn btn-style-two"><span class="txt">{{ __('home.subscribe') }}</span></button>
-                                    </div>
-                                </form>
-                            </div>
+                </div>
+                <!-- Form Column -->
+                <div class="form-column col-lg-6 col-md-12 col-sm-12">
+                    <div class="inner-column">
+                        <!-- Subscribe Form -->
+                        <div class="subscribe-form">
+                            <form method="post" action="#">
+                                @csrf
+                                <div class="form-group">
+                                    <input type="email" name="email" value="" placeholder="{{ __('home.email_contact') }}" required>
+                                    <button type="submit" class="theme-btn btn-style-two"><span class="txt">{{ __('home.subscribe') }}</span></button>
+                                </div>
+                            </form>
                         </div>
-
                     </div>
 
                 </div>
 
             </div>
 
-        </section>
-        <!-- End Newsletter Section -->
-    @endif
+        </div>
+
+    </section>
+    <!-- End Newsletter Section -->
 @endsection
+@push('scripts')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('a').on('click', function(e) {
+                if (!$(this).hasClass('allowedLink')) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+@endpush

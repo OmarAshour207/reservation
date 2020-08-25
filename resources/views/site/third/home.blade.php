@@ -275,42 +275,34 @@
         @endif
 
         <!-- Counter -->
-        <div class="counter-area counter-area-three">
+        <div class="counter-area">
             <div class="container">
                 <div class="row counter-bg">
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="counter-item">
-                            <i class="icofont-patient-bed"></i>
-                            <h3 class="counter">850</h3>
-                            <p>Patients Beds</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3">
+                    <div class="col-sm-6 col-md-3 col-lg-4">
                         <div class="counter-item">
                             <i class="icofont-people"></i>
-                            <h3><span class="counter">25000</span>+</h3>
-                            <p>Happy Patients</p>
+                            <h3><span class="counter">{{ $all_patients }}</span>+</h3>
+                            <p> {{ __('home.happy_client') }} </p>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-3">
+                    <div class="col-sm-6 col-md-3 col-lg-4">
                         <div class="counter-item">
                             <i class="icofont-doctor-alt"></i>
-                            <h3 class="counter">750</h3>
-                            <p>Doctors  & Nurse</p>
+                            <h3 class="counter">{{ $all_doctors }}</h3>
+                            <p> {{ __('home.doctor_and_nursery') }} </p>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-3">
+                    <div class="col-sm-12 col-md-3 col-lg-4">
                         <div class="counter-item">
                             <i class="icofont-badge"></i>
-                            <h3 class="counter">18</h3>
-                            <p>Year Experience</p>
+                            <h3 class="counter">{{ $success_mission }} </h3>
+                            <p> {{ __('home.success_missions') }} </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- End Counter -->
-
 
         @if(in_array('testimonials', $page_filter))
             <!-- Review Slider -->

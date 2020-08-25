@@ -64,7 +64,7 @@
 
 <body>
 
-    <div class="page-wrapper">
+    <div class="page-wrapper {{ session('lang') == 'ar' ? 'rtl' : '' }} ">
 
     <!-- Preloader -->
     <div class="preloader"></div>

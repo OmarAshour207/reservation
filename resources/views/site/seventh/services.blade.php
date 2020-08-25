@@ -1,4 +1,4 @@
-@extends('site.fifth.layouts.app')
+@extends('site.seventh.layouts.app')
 
 @section('content')
 

@@ -154,6 +154,7 @@ return [
     'le'                    => '-جنيه',
     'total_appointments'    => 'أجمالي المواعيد',
     'appointments_status'   => 'حالات المواعيد',
-    'search'                => 'بحث'
+    'search'                => 'بحث',
+    'total_paid'            => 'اجمالي المدفوعات',
 
 ];
