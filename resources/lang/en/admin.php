@@ -156,6 +156,8 @@ return [
     'appointments_status'   => 'Appointments Status',
     'search'                => 'Search',
     'total_paid'            => 'Total Paids',
+    'export_all'            => 'Export All Data',
+    'export_view'           => 'Export This View',
 
 
 ];

@@ -156,5 +156,7 @@ return [
     'appointments_status'   => 'حالات المواعيد',
     'search'                => 'بحث',
     'total_paid'            => 'اجمالي المدفوعات',
+    'export_all'            => 'تصدير كل المدفوعات',
+    'export_view'           => 'تصدير هذه الصفحه فقط',
 
 ];

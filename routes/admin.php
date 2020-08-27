@@ -65,5 +65,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'] , function () {
 
         Route::get('paids', 'AdminController@showPaid');
 
+        Route::get('export/all', 'ExcelController@export');
+        Route::get('export/view', 'ExcelController@exportView');
+
     });
 });

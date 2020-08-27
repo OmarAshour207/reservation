@@ -24,7 +24,8 @@
     </div>
 
     <div class="container-fluid page__container">
-
+        <a href="{{ url('admin/export/all') }}" class="btn btn-success mb-2"> <i class="fa fa-file-export"></i> {{ __('admin.export_all') }} </a>
+        <a href="{{ url('admin/export/view') }}" class="btn btn-success mb-2"> <i class="fa fa-file-export"></i> {{ __('admin.export_view') }} </a>
         <div class="card">
             <div class="table-responsive" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
 
