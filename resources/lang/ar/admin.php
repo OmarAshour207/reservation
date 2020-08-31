@@ -139,7 +139,6 @@ return [
     'color'                 => 'اللون',
     'clients_appointments'  => 'مواعيد العملاء',
     'appointments'          => 'المواعيد',
-    'client_name'           => 'أسم العميل',
     'time'                  => 'الوقت',
     'status'                => 'الحاله',
     'choose_status'         => 'أختر الحاله',

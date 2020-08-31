@@ -1,4 +1,6 @@
 <?php
+
+use App\Admin;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@HomePage');
@@ -30,4 +32,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('edit/profile/{id}', 'ProfileController@editProfile')->name('edit.profile');
     Route::post('book/appointment', 'AppointmentController@bookAppointment');
 });
+
+Route::match(['get','post'],'webhook', 'MessengerController@index');
 

@@ -138,7 +138,6 @@ return [
     'color'                 => 'Color',
     'clients_appointments'  => 'Clients Appointments',
     'appointments'          => 'Appointments',
-    'client_name'           => 'Client Name',
     'time'                  => 'Time',
     'status'                => 'Status',
     'choose_status'         => 'Choose Status',
@@ -158,6 +157,9 @@ return [
     'total_paid'            => 'Total Paids',
     'export_all'            => 'Export All Data',
     'export_view'           => 'Export This View',
+    'token'                 => 'Token',
+    'how_get_token'         => 'this is description video to explain how to get the token',
+    'facebook_link'         => 'Facebook Link',
 
 
 ];

@@ -36,6 +36,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'] , function () {
         Route::get('settings/seo', 'SeoController@showSeoPage')->name('settings.seo');
         Route::post('settings/seo', 'SeoController@store')->name('settings.seo.store');
 
+        Route::get('settings/tokens', 'FacebookController@showPage')->name('settings.tokens');
+        Route::post('settings/tokens', 'FacebookController@store')->name('settings.tokens');
+
         Route::resource('website-settings', 'SettingController');
 
         Route::resource('logos', 'LogoController');

@@ -170,6 +170,12 @@
                                 <span class="sidebar-menu-text"> {{ __('admin.themes') }}</span>
                             </a>
                         </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{{ route('settings.tokens') }}">
+                                <i class="fa fa-facebook-messenger"></i>
+                                <span class="sidebar-menu-text"> {{ __('admin.facebook') }}</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
