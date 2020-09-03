@@ -203,48 +203,30 @@
         <section class="expertise-area pb-70">
             <div class="container">
                 <div class="section-title">
-                    <h2>Our Expertise</h2>
+                    <h2>{{ __('home.recent_blogs') }}</h2>
                 </div>
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="expertise-item">
                             <div class="row">
-                                <div class="col-sm-6 col-lg-6 wow fadeInUp" data-wow-delay=".3s">
-                                    <a href="blog-details.html">
-                                        <div class="expertise-inner">
-                                            <i class="icofont-doctor-alt"></i>
-                                            <h3>Certified Doctors</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-6 col-lg-6 wow fadeInUp" data-wow-delay=".5s">
-                                    <a href="blog-details.html">
-                                        <div class="expertise-inner">
-                                            <i class="icofont-stretcher"></i>
-                                            <h3>Emergency</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-6 col-lg-6 wow fadeInUp" data-wow-delay=".3s">
-                                    <a href="blog-details.html">
-                                        <div class="expertise-inner">
-                                            <i class="icofont-network"></i>
-                                            <h3>Teachnology</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-6 col-lg-6 wow fadeInUp" data-wow-delay=".5s">
-                                    <a href="blog-details.html">
-                                        <div class="expertise-inner">
-                                            <i class="icofont-ambulance-cross"></i>
-                                            <h3>Ambulance</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                        </div>
-                                    </a>
-                                </div>
+                                @foreach ($blogs as $index => $blog)
+                                    <div class="col-sm-6 col-lg-6 wow fadeInUp" data-wow-delay=".5s">
+                                        <a href="{{ route('blog.show', ['id' => $blog->id, 'title' => $blog->$title]) }}">
+                                            <div class="expertise-inner">
+                                                <i class="icofont-stretcher"></i>
+                                                @php
+                                                    $title = session('lang') . '_title';
+                                                    $content = session('lang') . '_content';
+                                                @endphp
+                                                <h3> {{ $blog->$title }} </h3>
+                                                <p>{!! substr($blog->$content, 0, 50) !!}</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    @if ($index == 3)
+                                        @break
+                                    @endif
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -268,7 +250,7 @@
                         <h2>{{ __('home.meet_team') }}</h2>
                     </div>
                     <div class="row">
-                        @foreach($teamMembers as $teamMember)
+                        @foreach($teamMembers as $index => $teamMember)
                             <div class="col-sm-6 col-lg-4 wow fadeInUp" data-wow-delay=".5s">
                                 <div class="doctor-item">
                                     <div class="doctor-top">
@@ -277,17 +259,20 @@
                                     </div>
                                     <div class="doctor-bottom">
                                         <h3>
-                                            <a href="javascript:void(0);"> {{ $teamMember->role == 1 ? 'Dr' : 'Nur' }}  </a>
+                                            <a href="javascript:void(0);"> {{ $teamMember->role == 1 ? __('home.doctor') : __('home.nursery') }}  </a>
                                         </h3>
                                         @php $name = session('lang') . '_name'; @endphp
                                         <span>{{ $teamMember->$name }}</span>
                                     </div>
                                 </div>
                             </div>
+                            @if($index == 2)
+                                @break
+                            @endif
                         @endforeach
                     </div>
                     <div class="doctor-btn">
-                        <a href="doctor.html">See All</a>
+                        <a href="{{ url('appointments') }}"> {{ __('home.see_all') }} </a>
                     </div>
                 </div>
             </section>

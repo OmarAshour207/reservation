@@ -49,7 +49,6 @@ return [
     'happy_customers_said'  => 'Happy Customer Said',
     'call'                  => 'Call',
     'feedback'              => 'Feedback',
-    'subscribe'             => 'Subscribe',
     'join_newsletter'       => 'Join Our Newsletter',
     'search_here'           => 'Search here...',
     'learn_more'            => 'Learn More',
@@ -85,7 +84,6 @@ return [
     'old_password'          => 'Old Password',
     'appointment'           => 'Appointment',
     'team'                  => 'Team',
-    'services'              => 'Services',
     'book_appointment'      => 'Book your appointment',
     'confirm_through_hours' => 'We will confirm your  appointment within 2 hours',
     'choose_doctor'         => 'Choose Your Doctor',
@@ -120,6 +118,9 @@ return [
     'success_missions'      => 'Success Missions',
     'why_choose_us'         => 'Why Choose Us',
 'what_service_we_provide'   => 'What Service We Provide',
+    'doctor_and_nursery'    => 'Doctor & Nursery',
+    'see_all'               => 'See All',
+    'nursery'               => 'Nursery',
 
 
 ];

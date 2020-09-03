@@ -71,5 +71,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'] , function () {
         Route::get('export/all', 'ExcelController@export');
         Route::get('export/view', 'ExcelController@exportView');
 
+        Route::get('settings/analytics', 'AnalyticsController@showPage')->name('settings.analytics');
+        Route::post('settings/analytics', 'AnalyticsController@store')->name('settings.analytics');
+
     });
 });

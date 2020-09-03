@@ -157,5 +157,7 @@ return [
     'total_paid'            => 'اجمالي المدفوعات',
     'export_all'            => 'تصدير كل المدفوعات',
     'export_view'           => 'تصدير هذه الصفحه فقط',
+    'analytics'             => 'رمز التتبع',
+    'google_analytics'      => 'تحليلات جوجل'
 
 ];

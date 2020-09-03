@@ -160,6 +160,8 @@ return [
     'token'                 => 'Token',
     'how_get_token'         => 'this is description video to explain how to get the token',
     'facebook_link'         => 'Facebook Link',
+    'analytics'             => 'Google Analytics Code',
+    'google_analytics'      => 'Google Analytics'
 
 
 ];

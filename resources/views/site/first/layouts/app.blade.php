@@ -5,7 +5,20 @@
         session('lang') ?? session()->put('lang', app()->getLocale());
     @endphp
 
-    <meta charset="utf-8">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ setting('google_analytics') }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', '{{ setting('google_analytics') }}');
+        </script>
+
+        <meta charset="utf-8">
     <!-- MOBILE SPECIFIC -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="{{ setting('meta_keywords') }}" />

@@ -44,7 +44,6 @@ return [
     'happy_customers_said'  => 'العملاء السعيدين يقولون',
     'call'                  => 'أتصل',
     'feedback'              => 'مراجعتك لنا',
-    'subscribe'             => 'أشترك',
     'join_newsletter'       => 'أنضم لمعرفه اخر الأخبار',
     'search_here'           => 'أبحث هنا...',
     'learn_more'            => 'أعرف المزيد',
@@ -80,7 +79,6 @@ return [
     'old_password'          => 'كلمه السر القديمه',
     'appointment'           => 'الموعد',
     'team'                  => 'الفريق',
-    'services'              => 'الخدمات',
     'book_appointment'      => 'احجز موعدك',
     'confirm_through_hours' => 'سوف يتم تأكيد موعدك في أقرب وقت',
     'choose_doctor'         => 'أختار طبيبك',
@@ -115,5 +113,8 @@ return [
     'success_missions'      => 'المهمات الناجحه',
     'why_choose_us'         => 'لماذا تختارنا',
 'what_service_we_provide'   => 'ما هي الخدمه التي نقدمها',
+    'doctor_and_nursery'    => 'دكتور وتمريض',
+    'see_all'               => 'مشاهده الجميع',
+    'nursery'               => 'ممرضه',
 
 ];

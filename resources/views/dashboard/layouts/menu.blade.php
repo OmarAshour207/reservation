@@ -171,8 +171,14 @@
                             </a>
                         </li>
                         <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{{ route('settings.analytics') }}">
+                                <i class="fa fa-chart-area"></i>
+                                <span class="sidebar-menu-text"> {{ __('admin.google_analytics') }}</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button" href="{{ route('settings.tokens') }}">
-                                <i class="fa fa-facebook-messenger"></i>
+                                <i class="fab fa-facebook-messenger"></i>
                                 <span class="sidebar-menu-text"> {{ __('admin.facebook') }}</span>
                             </a>
                         </li>

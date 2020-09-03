@@ -58,34 +58,22 @@
                             </div>
                             <div class="speciality-item">
                                 <div class="row m-0">
-                                    <div class="col-sm-6 col-lg-6 wow fadeInUp" data-wow-delay=".3s">
-                                        <div class="speciality-inner">
-                                            <i class="icofont-check-circled"></i>
-                                            <h3>Child care</h3>
-                                            <p>Lorem ipsum dolor sit amet, is consectetur adipiscing</p>
+                                    @foreach($services as $index => $service)
+                                        <div class="col-sm-6 col-lg-6 wow fadeInUp" data-wow-delay=".5s">
+                                            <div class="speciality-inner">
+                                                <i class="icofont-check-circled"></i>
+                                                @php
+                                                    $title = session('lang') . '_title';
+                                                    $desc = session('lang') . '_description';
+                                                @endphp
+                                                <h3> {{ $service->$title }} </h3>
+                                                <p>{{ substr($service->$desc, 0, 20) }}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-6 col-lg-6 wow fadeInUp" data-wow-delay=".5s">
-                                        <div class="speciality-inner">
-                                            <i class="icofont-check-circled"></i>
-                                            <h3>More Stuff</h3>
-                                            <p>Lorem ipsum dolor sit amet, is consectetur adipiscing</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-lg-6 wow fadeInUp" data-wow-delay=".3s">
-                                        <div class="speciality-inner">
-                                            <i class="icofont-check-circled"></i>
-                                            <h3>Enough Lab</h3>
-                                            <p>Lorem ipsum dolor sit amet, is consectetur adipiscing</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-lg-6 wow fadeInUp" data-wow-delay=".5s">
-                                        <div class="speciality-inner">
-                                            <i class="icofont-check-circled"></i>
-                                            <h3>24 Hour Doctor</h3>
-                                            <p>Lorem ipsum dolor sit amet, is consectetur adipiscing</p>
-                                        </div>
-                                    </div>
+                                        @if($index == 3)
+                                            @break
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -116,7 +104,7 @@
                         <h2>{{ __('home.our_services') }}</h2>
                     </div>
                     <div class="row">
-                        @foreach($services as $service)
+                        @foreach($services as $index => $service)
                             <div class="col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay=".5s">
                             <div class="service-item">
                                 @php
@@ -136,6 +124,9 @@
                                 </div>
                             </div>
                         </div>
+                            @if($index == 7)
+                                @break
+                            @endif
                         @endforeach
                     </div>
                 </div>
@@ -220,6 +211,9 @@
                                 </div>
                             </div>
                         </div>
+                            @if($index == 7)
+                                @break
+                            @endif
                         @endforeach
                     </div>
                 </div>
@@ -248,7 +242,7 @@
                         <h2>{{ __('home.meet_team') }}</h2>
                     </div>
                     <div class="row">
-                        @foreach($teamMembers as $teamMember)
+                        @foreach($teamMembers as $index => $teamMember)
                             <div class="col-sm-6 col-lg-4 wow fadeInUp" data-wow-delay=".5s">
                                 <div class="doctor-item">
                                     <div class="doctor-top">
@@ -257,23 +251,28 @@
                                     </div>
                                     <div class="doctor-bottom">
                                         <h3>
-                                            <a href="javascript:void(0);"> {{ $teamMember->role == 1 ? 'Dr' : 'Nur' }}  </a>
+                                            <a href="javascript:void(0);"> {{ $teamMember->role == 1 ? __('home.doctor') : __('home.nursery') }}  </a>
                                         </h3>
                                         @php $name = session('lang') . '_name'; @endphp
                                         <span>{{ $teamMember->$name }}</span>
                                     </div>
                                 </div>
                             </div>
+                            @if($index == 2)
+                                @break
+                            @endif
                         @endforeach
                     </div>
                     <div class="doctor-btn">
-                        <a href="doctor.html">See All</a>
+                        <a href="{{ url('appointments') }}"> {{ __('home.see_all') }} </a>
                     </div>
                 </div>
             </section>
             <!-- End Team Members -->
         @endif
-
+        <br>
+        <br>
+        <br>
         <!-- Counter -->
         <div class="counter-area">
             <div class="container">

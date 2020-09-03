@@ -4,6 +4,18 @@
     @php
         session('lang') ?? session()->put('lang', app()->getLocale());
     @endphp
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ setting('google_analytics') }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', '{{ setting('google_analytics') }}');
+        </script>
 
     <meta charset="utf-8">
     <!-- MOBILE SPECIFIC -->
