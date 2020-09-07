@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Admin;
 use App\Appointment;
+use App\AppointmentNotification;
 use App\Http\Controllers\Controller;
 use App\Reservation;
 use App\User;
@@ -28,7 +29,7 @@ class AppointmentController extends Controller
             ['doctors' => $doctors, 'users' => $users]);
     }
 
-    public function store(Request $request, Appointment $appointment)
+    public function store(Request $request)
     {
         $data = $request->validate([
             'doctor_id'     => 'required|numeric',
@@ -37,7 +38,15 @@ class AppointmentController extends Controller
             'user_id'       => 'required|numeric',
             'price'         => 'required|numeric'
         ]);
-        Appointment::create($data);
+        $appointment = Appointment::create($data);
+
+        $user = User::findOrFail($data['user_id']);
+        AppointmentNotification::create([
+            'user_id'   => $appointment->user_id,
+            'content'   => ' ' . __('admin.make_an_appointment_at') . ' ' . date('g:i A', strtotime($appointment->appointment)),
+            'status'    => 0
+        ]);
+
         session()->flash('success', __('home.booked_successfully'));
         return redirect()->route('appointments.index');
     }

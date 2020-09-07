@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Admin;
 use App\Appointment;
+use App\AppointmentNotification;
 use App\Reservation;
 use App\Service;
 use App\Visitor;
@@ -22,7 +23,13 @@ class AppointmentController extends Controller
             'price'         => 'required|numeric'
         ]);
         $data['user_id'] = auth()->user()->id;
-        Appointment::create($data);
+        $appointment = Appointment::create($data);
+
+        AppointmentNotification::create([
+            'user_id'   => $appointment->user_id,
+            'content'   => ' ' . __('admin.make_an_appointment_at') . ' ' . $appointment->appointment,
+            'status'    => 0
+        ]);
         session()->flash('success', __('home.booked_successfully'));
         return redirect('/');
     }

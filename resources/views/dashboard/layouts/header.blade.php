@@ -36,25 +36,38 @@
                         </a>
                         <div id="notifications_menu" class="dropdown-menu dropdown-menu-right navbar-notifications-menu">
                             <div class="dropdown-item d-flex align-items-center py-2">
-                                <span class="flex navbar-notifications-menu__title m-0">Notifications</span>
-                                <a href="javascript:void(0)" class="text-muted"><small>Clear all</small></a>
+                                <span class="flex navbar-notifications-menu__title m-0"> {{ __('admin.notifications') }} </span>
+                                <a href="{{ route('clear.notifications') }}" class="text-muted"><small>{{ __('admin.clear_all') }}</small></a>
                             </div>
                             <div class="navbar-notifications-menu__content" data-perfect-scrollbar>
+                                @php
+                                    $notifications = \App\AppointmentNotification::with('user')
+                                        ->where('status', '0')
+                                        ->orderBy('id', 'desc')
+                                        ->limit(10)
+                                        ->get();
+                                @endphp
                                 <div class="py-2">
+                                    @foreach($notifications as $notification)
                                     <div class="dropdown-item d-flex">
                                         <div class="mr-3">
                                             <div class="avatar avatar-sm" style="width: 32px; height: 32px;">
-                                                <img src="{{ asset('dashboard/images/256_daniel-gaffey-1060698-unsplash.jpg') }}" alt="Avatar" class="avatar-img rounded-circle">
+                                                <img src="{{ $notification->user->user_image }}" alt="Avatar" class="avatar-img rounded-circle">
                                             </div>
                                         </div>
                                         <div class="flex">
-                                            <a href="#">A.Demian</a> left a comment on <a href="#">FlowDash</a><br>
-                                            <small class="text-muted">1 minute ago</small>
+                                            <a href="{{ url('admin/client/doctors/'. $notification->user->id) }}">
+                                                {{ $notification->user->name }}
+                                            </a>
+                                            {{ $notification->content }}
+                                            <br>
+                                            <small class="text-muted">{{ $notification->created_at->format('d M') }}</small>
                                         </div>
                                     </div>
+                                    @endforeach
                                 </div>
                             </div>
-                            <a href="javascript:void(0);" class="dropdown-item text-center navbar-notifications-menu__footer">View All</a>
+                            <a href="{{ route('view.notifications') }}" class="dropdown-item text-center navbar-notifications-menu__footer">{{ __('admin.view_all') }}</a>
                         </div>
                     </li>
                 </ul>

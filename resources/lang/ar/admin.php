@@ -158,6 +158,11 @@ return [
     'export_all'            => 'تصدير كل المدفوعات',
     'export_view'           => 'تصدير هذه الصفحه فقط',
     'analytics'             => 'رمز التتبع',
-    'google_analytics'      => 'تحليلات جوجل'
+    'google_analytics'      => 'تحليلات جوجل',
+    'notifications'         => 'الأشعارات',
+    'view_all'              => 'مشاهده الكل',
+    'clear_all'             => 'حذف الكل',
+    'make_an_appointment_at' => 'حجز موعد في الساعه',
+    'date'                  => 'التاريخ'
 
 ];

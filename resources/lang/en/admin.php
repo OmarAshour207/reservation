@@ -161,7 +161,12 @@ return [
     'how_get_token'         => 'this is description video to explain how to get the token',
     'facebook_link'         => 'Facebook Link',
     'analytics'             => 'Google Analytics Code',
-    'google_analytics'      => 'Google Analytics'
+    'google_analytics'      => 'Google Analytics',
+    'notifications'         => 'Notifications',
+    'view_all'              => 'View All',
+    'clear_all'             => 'Clear all',
+    'make_an_appointment_at' => 'Make an appointment at',
+    'date'                  => 'Date'
 
 
 ];

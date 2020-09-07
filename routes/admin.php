@@ -74,5 +74,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'] , function () {
         Route::get('settings/analytics', 'AnalyticsController@showPage')->name('settings.analytics');
         Route::post('settings/analytics', 'AnalyticsController@store')->name('settings.analytics');
 
+        Route::get('clear/notifications', 'NotificationsController@clearAll')->name('clear.notifications');
+        Route::get('view/notifications', 'NotificationsController@viewAll')->name('view.notifications');
     });
 });

@@ -121,6 +121,7 @@ return [
     'doctor_and_nursery'    => 'Doctor & Nursery',
     'see_all'               => 'See All',
     'nursery'               => 'Nursery',
+    'deleted_successfully'  => 'Deleted Successfully',
 
 
 ];

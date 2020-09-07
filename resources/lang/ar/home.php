@@ -116,5 +116,6 @@ return [
     'doctor_and_nursery'    => 'دكتور وتمريض',
     'see_all'               => 'مشاهده الجميع',
     'nursery'               => 'ممرضه',
+    'deleted_successfully'  => 'تم الحذف بنجاح',
 
 ];
