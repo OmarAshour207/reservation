@@ -302,7 +302,9 @@
                     <div class="main">
                         <div class="slider-nav">
                             @php
-                                $desc = [];
+                                $name = session('lang') . '_name';
+                                $title = session('lang') . '_title';
+                                $desc1 = session('lang') . '_description';
                             @endphp
                             @foreach ($testimonials as $testimonial)
                                 <div>
@@ -310,12 +312,6 @@
                                         <img src="{{ $testimonial->testimonial_image }}" alt="Feedback">
                                     </div>
                                     <div class="review-details">
-                                        @php
-                                            $name = session('lang') . '_name';
-                                            $title = session('lang') . '_title';
-                                            $desc1 = session('lang') . '_description';
-                                            array_push($desc, $testimonial->$desc1);
-                                        @endphp
                                         <h3>{{ $testimonial->$name }}</h3>
                                         <span>{{ $testimonial->$title }}</span>
                                     </div>
@@ -324,11 +320,11 @@
                         </div>
 
                         <div class="slider-for">
-                            @for ($i = 0; $i < count($desc); $i++)
+                            @foreach ($testimonials as $testimonial)
                                 <div>
-                                    <p>{{ $desc[$i] }}</p>
+                                    <p>{{ $testimonial->$desc }}</p>
                                 </div>
-                            @endfor
+                            @endforeach
                         </div>
                     </div>
                 </div>

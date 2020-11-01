@@ -101,8 +101,15 @@ class HomeController extends Controller
         $name = getThemeName();
         $services = Service::orderBy('id', 'desc')->limit(8)->get();
 
+        $all_patients = Appointment::all()->count();
+        $all_doctors = Admin::all()->count();
+        $success_mission = Appointment::where('status', 1)->count();
+
         return view('site.' . $name . '.about',
-            compact('about', 'testimonials', 'teamMembers', 'services'));
+                compact('about', 'testimonials',
+                                'teamMembers', 'services',
+                                'all_patients', 'all_doctors',
+                                'success_mission'));
     }
 
     public function blogsPage()
@@ -110,7 +117,10 @@ class HomeController extends Controller
         $this->checkVisitor();
         $blogs = Blog::paginate(9);
         $services = Service::orderBy('id', 'desc')->limit(8)->get();
-        return view('site.' . getThemeName() . '.blogs', compact('blogs', 'services'));
+        $about = About::first();
+
+        return view('site.' . getThemeName() . '.blogs',
+                compact('blogs', 'services', 'about'));
     }
 
     public function showBlog($id, $title)
@@ -118,7 +128,11 @@ class HomeController extends Controller
         $blog = Blog::findOrFail($id);
         $services = Service::orderBy('id', 'desc')->limit(8)->get();
         $blogs = Blog::orderBy('id', 'desc')->limit(3)->get();
-        return view('site.' . getThemeName() . '.single_blog', compact('blog', 'services', 'blogs'));
+        $about = About::first();
+
+        return view('site.' . getThemeName() . '.single_blog',
+                compact('blog', 'services',
+                                'blogs', 'about'));
     }
 
     public function teamPage()
@@ -127,7 +141,10 @@ class HomeController extends Controller
         $services = Service::orderBy('id', 'desc')->limit(8)->get();
         $teamMembers = TeamMember::whenSearch(\request()->search)->orderBy('id', 'desc')->limit(9)->get();
         $name = getThemeName();
-        return view('site.' . $name . '.team', compact('services' , 'teamMembers'));
+        $about = About::first();
+
+        return view('site.' . $name . '.team',
+                compact('services' , 'teamMembers', 'about'));
     }
 
     public function servicesPage()
@@ -136,8 +153,10 @@ class HomeController extends Controller
         $name = getThemeName();
         $services = Service::orderBy('id', 'desc')->limit(8)->get();
         $blogs = Blog::orderBy('id', 'desc')->limit(3)->get();
+        $about = About::first();
 
-        return view('site.' . $name . '.services', compact('services', 'blogs'));
+        return view('site.' . $name . '.services',
+                compact('services', 'blogs', 'about'));
     }
 
     public function SingleService($id, $title)

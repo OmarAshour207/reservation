@@ -118,7 +118,7 @@
                             @php
                                 $desc = session('lang') . '_description';
                             @endphp
-                            <p class="text"> {{ $aboutUs->$desc }} </p>
+                            <p class="text"> {{ $about->$desc }} </p>
                             <a href="#" class="theme-btn btn-style-two"><span class="txt">Consultation</span></a>
                         </div>
 

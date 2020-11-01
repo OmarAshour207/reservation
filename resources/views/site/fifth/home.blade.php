@@ -102,7 +102,7 @@
     @endif
 
 
-    @if (in_array('out_services', $page_filter))
+    @if (in_array('our_services', $page_filter))
         <!-- Services Section -->
         <section class="services-section">
             <div class="auto-container">
@@ -198,8 +198,7 @@
         </section>
     @endif
 
-        	<!-- Counter Section -->
-
+    <!-- Counter Section -->
 	<section class="counter-section style-two" style="background-image: url({{ asset('site/part2/images/background/pattern-3.png') }})">
 		<div class="auto-container">
 			<!-- Fact Counter -->

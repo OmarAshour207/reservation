@@ -116,87 +116,56 @@
 	</section>
 	<!-- End Featured Section -->
 
-	<!-- Counter Section -->
-	<section class="counter-section style-two" style="background-image: url(images/background/pattern-3.png)">
-		<div class="auto-container">
-			<!-- Fact Counter -->
-			<div class="fact-counter style-two">
+    <!-- Counter Section -->
+    <section class="counter-section style-two" style="background-image: url({{ asset('site/part2/images/background/pattern-3.png') }})">
+        <div class="auto-container">
+            <!-- Fact Counter -->
+            <div class="fact-counter style-two">
+                <div class="row clearfix">
+                    <!--Column-->
+                    <div class="column counter-column col-lg-4 col-md-6 col-sm-12">
+                        <div class="inner wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+                            <div class="content">
+                                <div class="icon flaticon-logout"></div>
+                                <div class="count-outer count-box">
+                                    <span class="count-text" data-speed="2500" data-stop="{{ $all_patients }}">0</span>
+                                </div>
+                                <h4 class="counter-title">{{ __('home.happy_client') }}</h4>
+                            </div>
+                        </div>
+                    </div>
 
-				<div class="row clearfix">
-					<!--Column-->
-					<div class="column counter-column col-lg-4 col-md-6 col-sm-12">
+                    <!--Column-->
+                    <div class="column counter-column col-lg-4 col-md-6 col-sm-12">
+                        <div class="inner wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1500ms">
+                            <div class="content">
+                                <div class="icon flaticon-logout"></div>
+                                <div class="count-outer count-box alternate">
+                                    +<span class="count-text" data-speed="3000" data-stop="{{ $all_doctors }}">0</span>
+                                </div>
+                                <h4 class="counter-title">{{ __('home.team_clinic') }}</h4>
+                            </div>
+                        </div>
+                    </div>
 
-						<div class="inner wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+                    <!--Column-->
+                    <div class="column counter-column col-lg-4 col-md-6 col-sm-12">
+                        <div class="inner wow fadeInLeft" data-wow-delay="600ms" data-wow-duration="1500ms">
+                            <div class="content">
+                                <div class="icon flaticon-logout"></div>
+                                <div class="count-outer count-box">
+                                    <span class="count-text" data-speed="3000" data-stop="{{ $success_mission }}">0</span>
+                                </div>
+                                <h4 class="counter-title">{{ __('home.success_missions') }}</h4>
+                            </div>
+                        </div>
+                    </div>
 
-							<div class="content">
-
-								<div class="icon flaticon-logout"></div>
-
-								<div class="count-outer count-box">
-
-									<span class="count-text" data-speed="2500" data-stop="2350">0</span>
-
-								</div>
-
-								<h4 class="counter-title">Satisfied Patients</h4>
-
-							</div>
-
-						</div>
-
-					</div>
-
-					<!--Column-->
-					<div class="column counter-column col-lg-4 col-md-6 col-sm-12">
-
-						<div class="inner wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1500ms">
-
-							<div class="content">
-
-								<div class="icon flaticon-logout"></div>
-
-								<div class="count-outer count-box alternate">
-
-									+<span class="count-text" data-speed="3000" data-stop="350">0</span>
-
-								</div>
-
-								<h4 class="counter-title">Doctor’s Team</h4>
-
-							</div>
-
-						</div>
-
-					</div>
-
-					<!--Column-->
-					<div class="column counter-column col-lg-4 col-md-6 col-sm-12">
-
-						<div class="inner wow fadeInLeft" data-wow-delay="600ms" data-wow-duration="1500ms">
-
-							<div class="content">
-
-								<div class="icon flaticon-logout"></div>
-
-								<div class="count-outer count-box">
-
-									<span class="count-text" data-speed="3000" data-stop="2150">0</span>
-
-								</div>
-
-								<h4 class="counter-title">Success Mission</h4>
-
-							</div>
-
-						</div>
-
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</section>
-	<!-- End Counter Section -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Counter Section -->
 
 	<!-- Team Section -->
     <section class="team-section">

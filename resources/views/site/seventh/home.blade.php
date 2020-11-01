@@ -290,7 +290,7 @@
 			<div class="inner-container">
 				<div class="row clearfix">
 					<!-- Doctor Block -->
-					<div class="doctor-block col-lg-4 col-md-6 col-sm-12">
+					<div class="doctor-block col-lg-6 col-md-6 col-sm-12">
 						<div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
 							<h3>{{ __('home.office_hours') }}</h3>
 							<ul class="doctor-time-list">
@@ -306,16 +306,7 @@
 					</div>
 
 					<!-- Doctor Block -->
-					<div class="doctor-block col-lg-4 col-md-6 col-sm-12">
-						<div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-							<h3>{{ __('home.doctor_timetable') }}e</h3>
-							<div class="text">The following is for guidance only to help you plan your appointment with a preferred doctor or nurse. It does not guarantee availability as the doctors or nurses may sometimes be attending to other duties.</div>
-							<a href="{{ url('appointments') }}" class="detail"> {{ __('home.get_appointment') }} </a>
-						</div>
-					</div>
-
-					<!-- Doctor Block -->
-					<div class="doctor-block col-lg-4 col-md-6 col-sm-12">
+					<div class="doctor-block col-lg-6 col-md-6 col-sm-12">
 						<div class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
                             <h3>{{ __('home.about_us') }}</h3>
                             @php

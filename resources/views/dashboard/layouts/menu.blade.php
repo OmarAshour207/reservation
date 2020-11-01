@@ -39,12 +39,12 @@
                     </a>
                 </li>
 
-                <li class="sidebar-menu-item">
-                    <a class="sidebar-menu-button" href="{{ route('projects.index') }}">
-                        <i class="sidebar-menu-icon sidebar-menu-icon--left  fa fa-briefcase"></i>
-                        <span class="sidebar-menu-text">  {{ __('admin.projects') }} </span>
-                    </a>
-                </li>
+{{--                <li class="sidebar-menu-item">--}}
+{{--                    <a class="sidebar-menu-button" href="{{ route('projects.index') }}">--}}
+{{--                        <i class="sidebar-menu-icon sidebar-menu-icon--left  fa fa-briefcase"></i>--}}
+{{--                        <span class="sidebar-menu-text">  {{ __('admin.projects') }} </span>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
 
                 <li class="sidebar-menu-item">
                     <a class="sidebar-menu-button" href="{{ route('contacts.index') }}">

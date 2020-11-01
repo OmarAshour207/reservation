@@ -4,7 +4,7 @@
             <div class="inner-container clearfix">
 				<!--Info-->
 				<div class="logo-outer">
-					<div class="logo"><a href="index-2.html"><img src="{{ getLogo() }}" alt="" title=""></a></div>
+					<div class="logo"><a href="{{ url('/') }}"><img src="{{ getLogo() }}" alt="" title=""></a></div>
 				</div>
 
 				<!--Nav Box-->
@@ -20,7 +20,7 @@
 
 						<div class="collapse navbar-collapse clearfix" id="navbarSupportedContent">
 							<ul class="navigation clearfix">
-                                <li class="{{ setCurrent('') }}">
+                                <li class="{{ setActiveHome('') }}">
                                     <a href="{{ url('/') }}"> {{ __('home.home') }} </a>
 								</li>
 

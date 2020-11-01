@@ -56,14 +56,14 @@
                             <td style="width: 120px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ $about->ar_description  }}
+                                        {{ mb_substr($about->ar_description, 0, 30)  }}
                                     </div>
                                 </div>
                             </td>
                             <td style="width: 120px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ $about->en_description  }}
+                                        {{ substr($about->en_description, 0, 30)  }}
                                     </div>
                                 </div>
                             </td>

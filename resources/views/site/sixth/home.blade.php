@@ -152,40 +152,8 @@
 		<div class="auto-container">
 			<div class="sec-title light centered">
 				<h2>{{ __('admin.our_projects') }}</h2>
-				<div class="separator"></div>
 			</div>
 
-			<div class="three-item-carousel owl-carousel owl-theme">
-				@foreach ($projects as $project)
-				<!-- Department Block Two -->
-				<div class="department-block-two">
-					<div class="inner-box">
-						<div class="image">
-							<a href="#">
-                                <img src="{{ $project->project_image }}" alt="" /></a>
-						</div>
-						<div class="lower-content">
-                            @php
-                                $title = session('lang') . '_title';
-                                $desc = session('lang') . '_description';
-                            @endphp
-							<h3>
-                                <a href="#">{{ $project->$title }}</a>
-                            </h3>
-
-							<div class="text">
-                                {{ $project->$desc }}
-                            </div>
-
-							<a href="#" class="read-more">{{ __('home.read_more') }} <span class="arrow fas fa-angle-double-right"></span></a>
-
-						</div>
-
-					</div>
-
-                </div>
-                @endforeach
-			</div>
 		</div>
 	</section>
 	<!-- End Department Section Two -->

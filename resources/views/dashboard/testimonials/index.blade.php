@@ -61,14 +61,14 @@
                             <td style="width: 40px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ $testimonial->ar_name }}
+                                        {{ mb_substr($testimonial->ar_name, 0, 20) }}
                                     </div>
                                 </div>
                             </td>
                             <td style="width: 40px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ $testimonial->en_name }}
+                                        {{ substr($testimonial->en_name, 0, 20) }}
                                     </div>
                                 </div>
                             </td>
@@ -76,14 +76,14 @@
                             <td style="width: 40px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ $testimonial->ar_title }}
+                                        {{ mb_substr($testimonial->ar_title, 0, 20) }}
                                     </div>
                                 </div>
                             </td>
                             <td style="width: 40px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ $testimonial->en_title }}
+                                        {{ substr($testimonial->en_title, 0, 20) }}
                                     </div>
                                 </div>
                             </td>
@@ -91,7 +91,7 @@
                             <td style="width: 120px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ substr($testimonial->ar_description, 0, 20) }}
+                                        {{ mb_substr($testimonial->ar_description, 0, 20) }}
                                     </div>
                                 </div>
                             </td>

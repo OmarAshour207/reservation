@@ -142,7 +142,7 @@
                                 <td> {{ $appointment->price }} </td>
                                 <td>
                                     @php
-                                        $buttons = ['rejected', 'success', 'warning'];
+                                        $buttons = ['danger', 'success', 'warning'];
                                     @endphp
                                     <button class="btn btn-{{ $buttons[$appointment->status] }} text-white">
                                         @if($appointment->status == 2)
